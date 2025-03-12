@@ -12,6 +12,8 @@ spec:
       type: string
     - name: records
       type: string
+    - name: endpoint
+      type: string
   tasks:
     - name: upload-data-card
       params:
@@ -23,6 +25,8 @@ spec:
           value: $(params.key)
         - name: records
           value: $(params.records)
+        - name: endpoint
+          value: $(params.endpoint)
       taskRef:
         kind: Task
         name: upload-data-card

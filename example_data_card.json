@@ -1,0 +1,103 @@
+{
+  "eventName": "s3:ObjectCreated:Put",
+  "key": "anthony-test-bucket-eb7863f0-58a2-43c7-962d-9b0d54666282",
+  "records": [
+    {
+      "awsRegion": "",
+      "eventName": "s3:ObjectCreated:Put",
+      "eventSource": "minio:s3",
+      "eventTime": "2025-03-12T16:58:02.393Z",
+      "eventVersion": "2.0",
+      "requestParameters": {
+        "principalId": "minio",
+        "region": "",
+        "sourceIPAddress": "136.37.71.232"
+      },
+      "responseElements": {
+        "x-amz-id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
+        "x-amz-request-id": "182C1CAC5025EF94",
+        "x-minio-deployment-id": "eb7863f0-58a2-43c7-962d-9b0d54666282",
+        "x-minio-origin-endpoint": "http://10.129.1.31:9000"
+      },
+      "s3": {
+        "bucket": {
+          "arn": "arn:aws:s3:::anthony-test-bucket",
+          "name": "anthony-test-bucket",
+          "ownerIdentity": {
+            "principalId": "minio"
+          }
+        },
+        "configurationId": "Config",
+        "object": {
+          "contentType": "image/jpeg",
+          "eTag": "8cf10101ad1ddb29df7fbbab9f007050",
+          "key": "IMG_4311.JPEG",
+          "sequencer": "182C1CAC5648BFD0",
+          "size": 520515,
+          "userMetadata": {
+            "content-type": "image/jpeg"
+          },
+          "versionId": "97ceae4b-b32e-441e-a17c-29746b69fb3d"
+        },
+        "s3SchemaVersion": "1.0"
+      },
+      "source": {
+        "host": "136.37.71.232",
+        "port": "",
+        "userAgent": "MinIO (linux; amd64) minio-go/v7.0.58 MinIO Console/(dev)"
+      },
+      "userIdentity": {
+        "principalId": "minio"
+      }
+    },
+    {
+      "awsRegion": "",
+      "eventName": "s3:ObjectCreated:Put",
+      "eventSource": "minio:s3",
+      "eventTime": "2025-03-12T13:40:59.347Z",
+      "eventVersion": "2.0",
+      "requestParameters": {
+        "principalId": "minio",
+        "region": "",
+        "sourceIPAddress": "136.37.71.232"
+      },
+      "responseElements": {
+        "x-amz-id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
+        "x-amz-request-id": "182C11EB8A1E7BCA",
+        "x-minio-deployment-id": "eb7863f0-58a2-43c7-962d-9b0d54666282",
+        "x-minio-origin-endpoint": "http://10.129.1.31:9000"
+      },
+      "s3": {
+        "bucket": {
+          "arn": "arn:aws:s3:::anthony-test-bucket",
+          "name": "anthony-test-bucket",
+          "ownerIdentity": {
+            "principalId": "minio"
+          }
+        },
+        "configurationId": "Config",
+        "object": {
+          "contentType": "image/jpeg",
+          "eTag": "d64d9b482c195c33509f20a31b2230be",
+          "key": "IMG_4316.JPEG",
+          "sequencer": "182C11EB91D6505A",
+          "size": 529739,
+          "userMetadata": {
+            "content-type": "image/jpeg"
+          },
+          "versionId": "0e30797c-4018-430b-be2a-6258d36f7153"
+        },
+        "s3SchemaVersion": "1.0"
+      },
+      "source": {
+        "host": "136.37.71.232",
+        "port": "",
+        "userAgent": "MinIO (linux; amd64) minio-go/v7.0.58 MinIO Console/(dev)"
+      },
+      "userIdentity": {
+        "principalId": "minio"
+      }
+    }
+  ],
+  "endpoint": "http://10.129.1.31:9000"
+}

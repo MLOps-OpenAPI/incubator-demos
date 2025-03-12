@@ -10,6 +10,7 @@ spec:
     - name: event_name
     - name: key
     - name: records
+    - name: endpoint
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -25,5 +26,7 @@ spec:
             value: $(tt.params.key)
           - name: records
             value: $(tt.params.records)
+          - name: endpoint
+            value: $(tt.params.endpoint)
         pipelineRef:
           name: upload-data-card

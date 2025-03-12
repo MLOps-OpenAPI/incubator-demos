@@ -9,6 +9,8 @@ spec:
     - name: event_name
       value: $(body.EventName)
     - name: key
-      value: $(body.Key)
+      value: '$(body.Records[0].s3.bucket.name)-$(body.Records[0].responseElements.x-minio-deployment-id)'
+    - name: endpoint
+      value: '$(body.Records[0].responseElements.x-minio-origin-endpoint)'
     - name: records
       value: $(body.Records)
