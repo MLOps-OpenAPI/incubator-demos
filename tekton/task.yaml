@@ -1,0 +1,37 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: upload-data-card
+spec:
+  params:
+    - name: payload_body
+      type: string
+    - name: event_name
+      type: string
+    - name: key
+      type: string
+    - name: records
+      type: string
+  steps:
+    - computeResources: {}
+      env:
+        - name: payload_body
+          value: $(params.payload_body)
+        - name: event_name
+          value: $(params.event_name)
+        - name: key
+          value: $(params.key)
+        - name: records
+          value: $(params.records)
+      image: 'registry.redhat.io/ubi9/python-311@sha256:deebed046bcdbb6023ee9d57b93de2ba4b4bb9b8c222f76a259c649cf6a6f6f4'
+      name: echo
+      script: |
+        #!/usr/bin/env python3
+        import json
+        import sys
+        import os
+
+        print("hello world!")
+        print(os.environ.get('event_name'))
+        print(os.environ.get('key'))
+        print(os.environ.get('payload_body'))

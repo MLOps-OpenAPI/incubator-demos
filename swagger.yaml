@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: MinIO S3 Event Notification API
+  description: API to handle MinIO S3 event notifications when an object is created or modified.
+  version: 1.0.0
+paths:
+  /data_intake:
+    post:
+      summary: Handle MinIO S3 Object Created Event
+      description: Receives an event notification when an object is created in the MinIO bucket.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                EventName:
+                  type: string
+                  example: "s3:ObjectCreated:Put"
+                Key:
+                  type: string
+                  example: "test-bucket/image.jpg"
+                endpoint:
+                  type: string
+                  example: "https://minio.test.svc.cluster.local"
+                Records:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      eventVersion:
+                        type: string
+                        example: "2.0"
+                      eventSource:
+                        type: string
+                        example: "minio:s3"
+                      awsRegion:
+                        type: string
+                        example: ""
+                      eventTime:
+                        type: string
+                        format: date-time
+                        example: "2025-02-06T01:04:31.998Z"
+                      eventName:
+                        type: string
+                        example: "s3:ObjectCreated:Put"
+                      userIdentity:
+                        type: object
+                        properties:
+                          principalId:
+                            type: string
+                            example: "access_key"
+                      s3:
+                        type: object
+                        properties:
+                          s3SchemaVersion:
+                            type: string
+                            example: "1.0"
+                          configurationId:
+                            type: string
+                            example: "Config"
+                          bucket:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                example: "test-bucket"
+                          object:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                                example: "image.jpg"
+                              size:
+                                type: integer
+                                example: 84452
+                              eTag:
+                                type: string
+                                example: "eb52f8e46f60a27a8a1a704e25757f30"
+                              contentType:
+                                type: string
+                                example: "image/jpeg"
+                              userMetadata:
+                                type: object
+                                properties:
+                                  content-type:
+                                    type: string
+                                    example: "image/jpeg"
+                              sequencer:
+                                type: string
+                                example: "182178E8B3728CAC"
+      responses:
+        '200':
+          description: Event processed successfully
+        '400':
+          description: Invalid request payload
+        '500':
+          description: Internal server error

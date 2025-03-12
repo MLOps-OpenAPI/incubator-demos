@@ -1,0 +1,14 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: minio-binding
+spec:
+  params:
+    - name: payload_body
+      value: $(body)
+    - name: event_name
+      value: $(body.EventName)
+    - name: key
+      value: $(body.Key)
+    - name: records
+      value: $(body.Records)

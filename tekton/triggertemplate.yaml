@@ -1,0 +1,29 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  annotations:
+    triggers.tekton.dev/old-escape-quotes: 'true'
+  name: minio-template
+spec:
+  params:
+    - name: payload_body
+    - name: event_name
+    - name: key
+    - name: records
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: upload-data-card-run-
+      spec:
+        params:
+          - name: payload_body
+            value: $(tt.params.payload_body)
+          - name: event_name
+            value: $(tt.params.event_name)
+          - name: key
+            value: $(tt.params.key)
+          - name: records
+            value: $(tt.params.records)
+        pipelineRef:
+          name: upload-data-card
