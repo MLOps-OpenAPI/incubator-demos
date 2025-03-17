@@ -1,0 +1,35 @@
+﻿apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: upload-data-card-s3
+  namespace: anthony-pipelines-test
+  resourceVersion: '3330427'
+  uid: 556b22dd-e995-4205-91cb-11bfa790e952
+spec:
+  params:
+    - name: data_card
+      type: string
+    - name: bucket
+      type: string
+    - name: s3_url
+      type: string
+    - name: access_key
+      type: string
+    - name: secret_key
+      type: string
+  tasks:
+    - name: upload-data-card-s3
+      params:
+        - name: data_card
+          value: $(params.data_card)
+        - name: bucket
+          value: $(params.bucket)
+        - name: s3_url
+          value: $(params.s3_url)
+        - name: access_key
+          value: $(params.access_key)
+        - name: secret_key
+          value: $(params.secret_key)
+      taskRef:
+        kind: Task
+        name: upload-data-card-s3
