@@ -1,0 +1,61 @@
+openapi: 3.0.3
+info:
+  title: Data Ingestion
+  description: Processes related to acquiring and importing data. Primary Personas are Data Engineers, Platform Engineers
+  version: 1.0.0
+paths:
+  /data-intake:
+    post:
+      summary: Data Intake
+      description: Creates a new data card, or updates an existing one if it exists.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                DataCard:
+                  type: string
+                  example: "test3"
+                Bucket:
+                  type: string
+                  example: "anthony-test-bucket"
+                S3Url:
+                  type: string
+                  format: uri
+                  example: "https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com"
+                AccessKey:
+                  type: string
+                SecretKey:
+                  type: string
+                path:
+                  type: string
+                  example: "/test_folder"
+                  default: "/"
+              required:
+                - DataCard
+                - Bucket
+                - S3Url
+                - AccessKey
+                - SecretKey
+      responses:
+        "200":
+          description: Successfully triggered event listener
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eventListener:
+                    type: string
+                    example: "s3-listener"
+                  namespace:
+                    type: string
+                    example: "anthony-pipelines-test"
+                  eventListenerUID:
+                    type: string
+                    example: "09a3802a-15cc-4384-9cf5-00df15ee57c8"
+                  eventID:
+                    type: string
+                    example: "f0cd6603-85a5-4cde-bce9-10d34a34fa5b"
