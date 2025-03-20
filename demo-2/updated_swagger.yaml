@@ -7,7 +7,10 @@ paths:
   /data-intake:
     post:
       summary: Data Intake
-      description: Creates a new data card, or updates an existing one if it exists.
+      description: >
+        Creates a new data card, or updates one if it exsists
+      tags:
+        - Data Ingestion
       requestBody:
         required: true
         content:
@@ -41,7 +44,7 @@ paths:
                 - SecretKey
       responses:
         "200":
-          description: Successfully triggered event listener
+          description: Successful data intake.
           content:
             application/json:
               schema:
@@ -49,13 +52,13 @@ paths:
                 properties:
                   eventListener:
                     type: string
-                    example: "s3-listener"
                   namespace:
                     type: string
-                    example: "anthony-pipelines-test"
                   eventListenerUID:
                     type: string
-                    example: "09a3802a-15cc-4384-9cf5-00df15ee57c8"
                   eventID:
                     type: string
-                    example: "f0cd6603-85a5-4cde-bce9-10d34a34fa5b"
+        '400':
+          description: Invalid input data.
+        '500':
+          description: Internal server error.
