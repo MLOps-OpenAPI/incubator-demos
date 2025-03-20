@@ -32,7 +32,9 @@ def main():
         try:
             json_object = json.loads(content)
             # Pretty print the JSON object
-            print(json.dumps(json_object, indent=2))
+            json_output = json.dumps(json_object, indent=2)
+            with open("$(results.json-content.path)", "w") as result_file:
+                result_file.write(json_output)
         except json.JSONDecodeError:
             print("Error: The object is not valid JSON.")
 
