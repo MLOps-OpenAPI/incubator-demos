@@ -8,6 +8,7 @@ spec:
   params:
     - name: data_card
     - name: bucket
+    - name: directory
     - name: s3_url
     - name: access_key
     - name: secret_key
@@ -22,6 +23,8 @@ spec:
             value: $(tt.params.data_card)
           - name: bucket
             value: $(tt.params.bucket)
+          - name: directory
+            value: $(tt.params.directory)
           - name: s3_url
             value: $(tt.params.s3_url)
           - name: access_key

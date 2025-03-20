@@ -8,6 +8,8 @@ spec:
       type: string
     - name: bucket
       type: string
+    - name: directory
+      type: string
     - name: s3_url
       type: string
     - name: access_key

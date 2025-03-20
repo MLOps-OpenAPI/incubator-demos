@@ -8,6 +8,8 @@ spec:
       type: string
     - name: bucket
       type: string
+    - name: directory
+      type: string
     - name: s3_url
       type: string
     - name: access_key
@@ -21,6 +23,8 @@ spec:
           value: $(params.data_card)
         - name: BUCKET
           value: $(params.bucket)
+        - name: DIRECTORY
+          value: $(params.directory)
         - name: ENDPOINT
           value: $(params.s3_url)
         - name: ACCESS_KEY
@@ -72,7 +76,7 @@ spec:
               file_info = []
 
               # List all objects in the source bucket
-              response = s3_client.list_objects_v2(Bucket=bucket_name)
+              response = s3_client.list_objects_v2(Bucket=bucket_name, Prefix=directory)
 
               if 'Contents' in response:
                   for obj in response['Contents']:
