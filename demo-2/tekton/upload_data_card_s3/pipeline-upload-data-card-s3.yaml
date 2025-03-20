@@ -24,7 +24,7 @@ spec:
         - name: bucket
           value: $(params.bucket)
         - name: directory
-          type: $(params.directory)
+          value: $(params.directory)
         - name: s3_url
           value: $(params.s3_url)
         - name: access_key
