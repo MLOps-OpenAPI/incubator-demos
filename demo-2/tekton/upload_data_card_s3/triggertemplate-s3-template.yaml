@@ -9,6 +9,7 @@ spec:
     - name: data_card
     - name: bucket
     - name: directory
+      default: ''
     - name: s3_url
     - name: access_key
     - name: secret_key

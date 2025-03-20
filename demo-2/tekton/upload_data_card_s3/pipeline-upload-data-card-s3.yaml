@@ -10,6 +10,7 @@ spec:
       type: string
     - name: directory
       type: string
+      default: ''
     - name: s3_url
       type: string
     - name: access_key
