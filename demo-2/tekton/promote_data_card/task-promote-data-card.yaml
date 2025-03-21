@@ -1,0 +1,90 @@
+﻿apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: promote-data-card
+spec:
+  params:
+    - name: data_card
+      type: string
+    - name: bucket_name
+      type: string
+    - name: endpoint_url
+      type: string
+    - name: aws_access_key_id
+      type: string
+    - name: aws_secret_access_key
+      type: string
+    - name: file_name
+      type: string
+  steps:
+    - computeResources: {}
+      env:
+        - name: DATA_CARD
+          value: $(params.data_card)
+        - name: FILE_NAME
+          value: $(params.file_name)
+        - name: BUCKET_NAME
+          value: $(params.bucket_name)
+        - name: S3_ENDPOINT
+          value: $(params.endpoint_url)
+        - name: ACCESS_KEY
+          value: $(params.aws_access_key_id)
+        - name: SECRET_KEY
+          value: $(params.aws_secret_access_key)
+      image: 'quay.io/rh_ee_akugel/datacard-python:1.1'
+      name: get-data-s3
+      script: |
+        #!/usr/bin/env python3
+
+        import boto3
+        import os
+        from io import BytesIO
+        import json
+        import botocore.exceptions
+        import ast
+
+        def check_hash(data_card: dict) -> bool:
+
+            #TODO: Implement hashing function
+
+            return data_card["hash"] == "abcd1234"
+
+        def update_data_card(data_card: dict):
+
+            bucket_name = os.environ.get("BUCKET_NAME")
+            endpoint_url=os.environ.get("S3_ENDPOINT")
+            aws_access_key_id = os.environ.get("ACCESS_KEY")
+            aws_secret_access_key = os.environ.get("SECRET_KEY")
+            object_key = os.environ.get("FILE_NAME")
+
+            s3_client = boto3.client(
+                service_name="s3",
+                aws_access_key_id=aws_access_key_id,
+                aws_secret_access_key=aws_secret_access_key,
+                endpoint_url=endpoint_url,
+            )
+
+            response = s3_client.put_object(
+                Bucket=bucket_name,
+                Key=object_key,
+                Body=json.dumps(data_card, indent=2)
+            )
+            print(response)
+
+
+        def main():
+            print("hello_world")
+            data_card = json.loads(os.environ.get("DATA_CARD"))
+
+            # Dummy hash for now
+            data_card["hash"] = "abcd1234"
+            
+            if check_hash(data_card):
+                data_card["golden"] = True
+
+            print(json.dumps(data_card, indent=2))
+            update_data_card(data_card)
+
+
+        if __name__ == "__main__":
+            main()
