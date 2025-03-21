@@ -53,13 +53,15 @@ spec:
             results = os.environ.get("RESULTS")
             comments = os.environ.get("COMMENTS")
             model_request = os.environ.get("MODEL-REQUEST")
+            model_request_bucket = "request-models"
+
 
             new_bucket = dict()
             new_bucket["algorithm"] = algorithm
             new_bucket["results"] = results
             new_bucket["comments"] = comments
 
-            s3_client_model_card_request.put_object(Body=json.dumps(new_bucket), Bucket=request-models, Key=model_request, ContentType='application/json')
+            s3_client_model_card_request.put_object(Body=json.dumps(new_bucket), Bucket=model_request_bucket, Key=model_request, ContentType='application/json')
 
         if __name__ == "__main__":
             main()
