@@ -33,4 +33,4 @@ spec:
           - name: secret_key
             value: $(tt.params.secret_key)
         pipelineRef:
-          name: upload-data-card-promoter
+          name: promote-data-card
