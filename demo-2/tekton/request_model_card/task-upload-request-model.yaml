@@ -59,7 +59,7 @@ spec:
             new_bucket["results"] = results
             new_bucket["comments"] = comments
 
-            s3_client_data_card.put_object(Body=json.dumps(new_bucket), Bucket=request-models, Key=model_request, ContentType='application/json')
+            s3_client_model_card_request.put_object(Body=json.dumps(new_bucket), Bucket=request-models, Key=model_request, ContentType='application/json')
 
         if __name__ == "__main__":
             main()
