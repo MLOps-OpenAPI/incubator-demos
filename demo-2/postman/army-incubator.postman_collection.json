@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "c092f877-20ea-4d8a-aae1-aa147e5c0b25",
+		"name": "army-incubator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12312635"
+	},
+	"item": [
+		{
+			"name": "demo-2",
+			"item": [
+				{
+					"name": "data-intake",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"DataCard\": \"demo-data-card\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"minio\",\n    \"SecretKey\": \"minio123\",\n    \"Directory\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mlops-router-demo-2.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/data-intake",
+							"protocol": "http",
+							"host": [
+								"mlops-router-demo-2",
+								"apps",
+								"cluster-497z4",
+								"497z4",
+								"sandbox2736",
+								"opentlc",
+								"com"
+							],
+							"path": [
+								"data-intake"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-data-card",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mlops-router-demo-2.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/get-data-card",
+							"protocol": "http",
+							"host": [
+								"mlops-router-demo-2",
+								"apps",
+								"cluster-497z4",
+								"497z4",
+								"sandbox2736",
+								"opentlc",
+								"com"
+							],
+							"path": [
+								"get-data-card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "promote-data-card",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"DataCard\": \"demo-data-card\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"minio\",\n    \"SecretKey\": \"minio123\",\n    \"path\": \"/test/\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mlops-router-demo-2.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/promote-data-card",
+							"protocol": "http",
+							"host": [
+								"mlops-router-demo-2",
+								"apps",
+								"cluster-497z4",
+								"497z4",
+								"sandbox2736",
+								"opentlc",
+								"com"
+							],
+							"path": [
+								"promote-data-card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "request-model-card",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataSetType\": \"images\",\n  \"DataCard\": \"string\",\n  \"metadata\": {},\n  \"trainingDataSets\": [\n    \"data.csv\",\n    \"data2.csv\",\n    \"data3.csv\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mlops-router-demo-2.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/request-model-card",
+							"protocol": "http",
+							"host": [
+								"mlops-router-demo-2",
+								"apps",
+								"cluster-497z4",
+								"497z4",
+								"sandbox2736",
+								"opentlc",
+								"com"
+							],
+							"path": [
+								"request-model-card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "push-trained-model-to-model-card",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"DataCard\": \"test-27\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"minio\",\n    \"SecretKey\": \"minio123\",\n    \"path\": \"/test/\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://mlops-router-demo-2.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/push-trained-model-to-model-card",
+							"protocol": "http",
+							"host": [
+								"mlops-router-demo-2",
+								"apps",
+								"cluster-497z4",
+								"497z4",
+								"sandbox2736",
+								"opentlc",
+								"com"
+							],
+							"path": [
+								"push-trained-model-to-model-card"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upload-data-minio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"EventName\": \"s3:ObjectCreated:Put\",\n  \"Key\": \"test-bucket/image.jpg\",\n  \"Records\": [\n    {\n      \"eventVersion\": \"2.0\",\n      \"eventSource\": \"minio:s3\",\n      \"awsRegion\": \"\",\n      \"eventTime\": \"2025-02-06T01:04:31.998Z\",\n      \"eventName\": \"s3:ObjectCreated:Put\",\n      \"userIdentity\": {\n        \"principalId\": \"access_key\"\n      },\n      \"requestParameters\": {\n        \"principalId\": \"access_key\",\n        \"region\": \"\",\n        \"sourceIPAddress\": \"192.168.1.10\"\n      },\n      \"responseElements\": {\n        \"x-amz-id-2\": \"dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8\",\n        \"x-amz-request-id\": \"182178E8B36AC9DF\",\n        \"x-minio-deployment-id\": \"2369dcb4-348b-4d30-8fc9-61ab089ba4bc\",\n        \"x-minio-origin-endpoint\": \"https://minio.test.svc.cluster.local\"\n      },\n      \"s3\": {\n        \"s3SchemaVersion\": \"1.0\",\n        \"configurationId\": \"Config\",\n        \"bucket\": {\n          \"name\": \"test-bucket\",\n          \"ownerIdentity\": {\n            \"principalId\": \"access_key\"\n          },\n          \"arn\": \"arn:aws:s3:::test-bucket\"\n        },\n        \"object\": {\n          \"key\": \"image.jpg\",\n          \"size\": 84452,\n          \"eTag\": \"eb52f8e46f60a27a8a1a704e25757f30\",\n          \"contentType\": \"image/jpeg\",\n          \"userMetadata\": {\n            \"content-type\": \"image/jpeg\"\n          },\n          \"sequencer\": \"182178E8B3728CAC\"\n        }\n      },\n      \"source\": {\n        \"host\": \"192.168.1.10\",\n        \"port\": \"\",\n        \"userAgent\": \"MinIO (linux; amd64) minio-go/v7.0.83\"\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://el-minio-listener-anthony-pipelines-test.apps.cluster-497z4.497z4.sandbox2736.opentlc.com",
+					"protocol": "http",
+					"host": [
+						"el-minio-listener-anthony-pipelines-test",
+						"apps",
+						"cluster-497z4",
+						"497z4",
+						"sandbox2736",
+						"opentlc",
+						"com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload-data-card-s3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"DataCard\": \"test3\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"minio\",\n    \"SecretKey\": \"minio123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://el-s3-listener-anthony-pipelines-test.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/",
+					"protocol": "http",
+					"host": [
+						"el-s3-listener-anthony-pipelines-test",
+						"apps",
+						"cluster-497z4",
+						"497z4",
+						"sandbox2736",
+						"opentlc",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
