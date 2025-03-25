@@ -16,5 +16,3 @@ spec:
       value: $(body.AccessKey)
     - name: secret_key
       value: $(body.SecretKey)
-    - name: path
-      value: $(body.path)
