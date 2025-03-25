@@ -8,8 +8,8 @@ spec:
   params:
     - name: data_card
     - name: bucket
-    - name: directory
-      default: ''
+    # - name: directory
+    #   default: ''
     - name: s3_url
     - name: access_key
     - name: secret_key
@@ -20,17 +20,17 @@ spec:
         generateName: upload-data-card-run-
       spec:
         params:
-          - name: data_card
+          - name: file_name
             value: $(tt.params.data_card)
-          - name: bucket
+          - name: bucket_name
             value: $(tt.params.bucket)
-          - name: directory
-            value: $(tt.params.directory)
-          - name: s3_url
+          # - name: directory
+          #   value: $(tt.params.directory)
+          - name: endpoint_url
             value: $(tt.params.s3_url)
-          - name: access_key
+          - name: aws_access_key_id
             value: $(tt.params.access_key)
-          - name: secret_key
+          - name: aws_secret_access_key
             value: $(tt.params.secret_key)
         pipelineRef:
           name: promote-data-card
