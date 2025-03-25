@@ -4,20 +4,15 @@ metadata:
   name: promote-data-card
 spec:
   params:
-    - default: demo-data-card
-      name: file_name
+    - name: file_name
       type: string
-    - default: data-cards
-      name: bucket_name
+    - name: bucket_name
       type: string
-    - default: 'https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com'
-      name: endpoint_url
+    - name: endpoint_url
       type: string
-    - default: minio
-      name: aws_access_key_id
+    - name: aws_access_key_id
       type: string
-    - default: minio123
-      name: aws_secret_access_key
+    - name: aws_secret_access_key
       type: string
   tasks:
     - name: get-object
