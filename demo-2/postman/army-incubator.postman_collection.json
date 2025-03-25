@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"DataCard\": \"demo-data-card\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"minio\",\n    \"SecretKey\": \"minio123\",\n    \"Directory\": \"test\"\n}",
+							"raw": "{\n    \"DataCard\": \"demo-data-card\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\",\n    \"Directory\": \"test\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -103,7 +103,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"DataCard\": \"demo-data-card\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"minio\",\n    \"SecretKey\": \"minio123\",\n    \"path\": \"/test/\"\n}",
+							"raw": "{\n    \"DataCard\": \"demo-data-card\",\n    \"Bucket\": \"data-cards\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -130,7 +130,7 @@
 					"response": []
 				},
 				{
-					"name": "request-model-card",
+					"name": "request-model",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -142,7 +142,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"dataSetType\": \"images\",\n  \"DataCard\": \"string\",\n  \"metadata\": {},\n  \"trainingDataSets\": [\n    \"data.csv\",\n    \"data2.csv\",\n    \"data3.csv\"\n  ]\n}",
+							"raw": "{\n  \"ModelRequest\": \"fish-test\",\n  \"Algorithm\": \"image-proccessing\",\n  \"Results\": \"90% pass\",\n  \"Comments\": \"train a model that will replace heads with fish\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -150,7 +150,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://mlops-router-demo-2.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/request-model-card",
+							"raw": "http://mlops-router-demo-2.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/request-model",
 							"protocol": "http",
 							"host": [
 								"mlops-router-demo-2",
@@ -162,14 +162,14 @@
 								"com"
 							],
 							"path": [
-								"request-model-card"
+								"request-model"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "push-trained-model-to-model-card",
+					"name": "set-model-ref",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -181,7 +181,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"DataCard\": \"test-27\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"minio\",\n    \"SecretKey\": \"minio123\",\n    \"path\": \"/test/\"\n}",
+							"raw": "{\n    \"DataCard\": \"test-27\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\",\n    \"path\": \"/test/\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -189,7 +189,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://mlops-router-demo-2.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/push-trained-model-to-model-card",
+							"raw": "http://mlops-router-demo-2.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/set",
 							"protocol": "http",
 							"host": [
 								"mlops-router-demo-2",
@@ -201,7 +201,7 @@
 								"com"
 							],
 							"path": [
-								"push-trained-model-to-model-card"
+								"set"
 							]
 						}
 					},
@@ -258,7 +258,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"DataCard\": \"test3\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"minio\",\n    \"SecretKey\": \"minio123\"\n}",
+					"raw": "{\n    \"DataCard\": \"test3\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -283,6 +283,40 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "access_key",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "secret_key",
+			"value": "",
+			"type": "string"
 		}
 	]
 }

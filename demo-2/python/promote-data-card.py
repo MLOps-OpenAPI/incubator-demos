@@ -1,19 +1,26 @@
 import boto3
 import os
-from io import BytesIO
 import json
-import botocore.exceptions
-import ast
+from typing import Tuple
+import hashlib
+
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
-def check_hash(data_card: dict) -> bool:
+def set_hash(data_card: dict):
+    buckets_string = str(data_card["buckets"])
+    print(f"Bucket info that is being hashed:\n{buckets_string}\n")
+    data_card["hash"] = hashlib.sha256(str.encode(buckets_string)).hexdigest()
 
-    #TODO: Implement hashing function
 
-    return data_card["hash"] == "abcd1234"
+def check_hash(data_card: dict) -> Tuple[bool, str]:
+    buckets_string = str(data_card["buckets"])
+    print(f"Bucket info that is being hashed:\n{buckets_string}\n")
+    data_card_hash = hashlib.sha256(str.encode(buckets_string)).hexdigest()
+
+    return data_card["hash"] == data_card_hash, data_card_hash
 
 def update_data_card(data_card: dict):
 
@@ -39,19 +46,25 @@ def update_data_card(data_card: dict):
 
 
 def main():
-    print("hello_world")
-    with open("/Users/akugel/Documents/Projects/global_stp_engagements/army/incubator-demos/demo-2/python/data_card_example.json", "r") as f:
-        data_card = json.load(f)
-    #data_card = json.loads(os.environ.get("DATA_CARD"))
+    print(os.getcwd())
+    # with open("incubator-demos/demo-2/python/promote-data-card.py", "r") as f:
+    #     data_card = json.load(f)
+    data_card = json.loads(os.environ.get("DATA_CARD"))
 
-    # Dummy hash for now
-    data_card["hash"] = "abcd1234"
-    
-    if check_hash(data_card):
+    #setting the hash
+    set_hash(data_card)
+
+    #checking the hash
+    matches, desired_hash = check_hash(data_card)
+
+    if matches:
         data_card["golden"] = True
+        print(json.dumps(data_card, indent=2))
+        update_data_card(data_card)
+    else:
+        print("error, the hash does not match.  This could indicate tampering")
+        print(f"current hash: {data_card['hash']}\nWhat the hash should be: {desired_hash}")
 
-    print(json.dumps(data_card, indent=2))
-    update_data_card(data_card)
 
 
 if __name__ == "__main__":
