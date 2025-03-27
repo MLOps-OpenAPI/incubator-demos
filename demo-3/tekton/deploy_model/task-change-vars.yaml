@@ -1,0 +1,82 @@
+
+
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: replace-vars
+spec:
+  params:
+  - default: "4.18"
+    description: The OpenShift Version to use
+    name: VERSION
+    type: string
+  - default: ""
+    description: The S3 Access Key
+    name: access-key
+    type: string
+  - default: ""
+    description: The S3 Secret Key
+    name: secret-key
+    type: string
+  - default: ""
+    description: The S3 URL Endpoint
+    name: bucket-endpoint
+    type: string
+  - default: ""
+    description: The S3 Bucket Name
+    name: bucket-name
+    type: string
+  - default: ""
+    description: The Model path inside of the S3 Bucket
+    name: bucket-path
+    type: string
+  - default: ""
+    description: The S3 secret name
+    name: display-name
+    type: string
+  - default: ""
+    description: The InferenceService name
+    name: inference-name
+    type: string
+  - default: ""
+    description: The namespace where everything is gonna be
+    name: namespace
+    type: string
+  - default: ""
+    description: The ServingRuntime name
+    name: serving-name
+    type: string
+  steps:
+  - computeResources: {}
+    image: quay.io/openshift/origin-cli:$(params.VERSION)
+    name: replace-vars
+    script: |
+      #!/usr/bin/env bash
+
+      ### Create the new directory with the manifests from template
+      cd $(workspaces.output.path)/demo-3
+      export DATE_SUFFIX=`date -u +%+4Y%m%d-%H%M%S-%N`
+      cp -a template test-${DATE_SUFFIX}
+      cd test-${DATE_SUFFIX}
+
+      ### Substitute CHANGEME vars with actual values
+      ### Using hash sign (#) on endpoint and path
+      ### as they contain / in the value, messing up the substitution
+
+      sed -i "s/REPLACE_ACCESS_KEY/$(params.access-key)/g" *
+      sed -i "s/REPLACE_SECRET_KEY/$(params.secret-key)/g" *
+      sed -i "s/REPLACE_BUCKET_NAME/$(params.bucket-name)/g" *
+      sed -i "s#REPLACE_BUCKET_ENDPOINT#$(params.bucket-endpoint)#g" *
+      sed -i "s#REPLACE_BUCKET_PATH#$(params.bucket-path)#g" *
+      sed -i "s/REPLACE_DISPLAY_NAME/$(params.display-name)/g" *
+      sed -i "s/REPLACE_INFERENCE_NAME/$(params.inference-name)/g" *
+      sed -i "s/REPLACE_NAMESPACE/$(params.namespace)/g" *
+      sed -i "s/REPLACE_SERVING_NAME/$(params.serving-name)/g" *
+
+      ### Apply changes
+      oc apply -k .
+
+      sleep 500
+  workspaces:
+  - name: output
