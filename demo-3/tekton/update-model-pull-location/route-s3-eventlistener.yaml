@@ -7,7 +7,7 @@ spec:
   path: /update-model-pull-location
   to:
     kind: Service
-    name: el-update-location-listener
+    name: el-update-model-location-listener
     weight: 100
   port:
     targetPort: http-listener
