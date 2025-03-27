@@ -1,0 +1,54 @@
+{
+   "model_name": "granite-7b-instruct",
+   "model_version": "1.0",
+   "license": "Apache 2.0",
+   "developer": "Granite AI Research",
+   "description": "Granite-7B-Instruct is a 7-billion parameter instruction-tuned language model optimized for natural language understanding and generation tasks.",
+   "architecture": "Transformer-based decoder model",
+   "training_data": "Trained on a diverse mixture of open-domain datasets, including Common Crawl, Wikipedia, books, and high-quality instruction-tuning datasets.",
+   "parameters": {
+     "num_parameters": "7 billion",
+     "hidden_size": 4096,
+     "num_layers": 32,
+     "num_attention_heads": 32
+   },
+   "capabilities": [
+     "Text completion",
+     "Question answering",
+     "Summarization",
+     "Code generation",
+     "Conversational AI"
+   ],
+   "limitations": [
+     "May generate incorrect or biased responses.",
+     "Struggles with highly specialized or niche knowledge.",
+     "Limited reasoning depth compared to larger models."
+   ],
+   "use_cases": [
+     "Chatbots and virtual assistants",
+     "Automated content generation",
+     "Document summarization",
+     "Educational tutoring"
+   ],
+   "source_data": {
+    "data_cards": [
+    ],
+    "model_cards": [
+      "huggingface.co/ibm-granite/granite-7b-instruct"
+    ]
+  },
+   "deployment": {
+     "frameworks": ["PyTorch", "Transformers (Hugging Face)", "ONNX Runtime", "vLLM"],
+     "hardware_requirements": "Recommended: A100 (40GB) or higher GPU for inference."
+   },
+   "ethical_considerations": {
+     "bias_mitigation": "Efforts have been made to reduce biases, but some biases may still be present.",
+     "misuse_prevention": "Not intended for use in critical decision-making without human oversight."
+   },
+   "citation": "Granite AI Research, 'Granite-7B-Instruct: A Scalable Instruction-Tuned Language Model', 2025.",
+   "model_pull_location": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/model-bucket/granite-7b-instruct",
+   "deployed_locations": [
+
+   ]
+ }
+ 

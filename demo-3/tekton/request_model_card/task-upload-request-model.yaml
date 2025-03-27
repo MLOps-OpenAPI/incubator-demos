@@ -1,0 +1,67 @@
+﻿apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: request-model
+spec:
+  params:
+    - name: model_request
+      type: string
+    - name: algorithm
+      type: string
+    - name: results
+      type: string
+    - name: comments
+      type: string
+  steps:
+    - computeResources: {}
+      env:
+        - name: MODEL-REQUEST
+          value: $(params.model_request)
+        - name: ALGORITHM
+          value: $(params.algorithm)
+        - name: RESULTS
+          value: $(params.results)
+        - name: COMMENTS
+          value: $(params.comments)
+      image: 'quay.io/rh_ee_akugel/datacard-python:1.1'
+      name: echo
+      script: |
+        #!/usr/bin/env python3
+
+        import boto3
+        import botocore
+        import os
+        from io import BytesIO
+        import json
+        import botocore.exceptions
+
+        def main():
+
+            aws_access_key_id = os.environ.get("ACCESS_KEY")
+            aws_secret_access_key = os.environ.get("SECRET_KEY")
+            aws_endpoint = os.environ.get("ENDPOINT")
+
+            s3_client_model_card_request = boto3.client(
+                service_name="s3",
+                aws_access_key_id='minio',
+                aws_secret_access_key='minio123',
+                endpoint_url='https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com',
+            )
+
+
+            algorithm = os.environ.get("ALGORITHM")
+            results = os.environ.get("RESULTS")
+            comments = os.environ.get("COMMENTS")
+            model_request = os.environ.get("MODEL-REQUEST")
+            model_request_bucket = "request-models"
+
+
+            new_bucket = dict()
+            new_bucket["algorithm"] = algorithm
+            new_bucket["results"] = results
+            new_bucket["comments"] = comments
+
+            s3_client_model_card_request.put_object(Body=json.dumps(new_bucket), Bucket=model_request_bucket, Key=model_request, ContentType='application/json')
+
+        if __name__ == "__main__":
+            main()

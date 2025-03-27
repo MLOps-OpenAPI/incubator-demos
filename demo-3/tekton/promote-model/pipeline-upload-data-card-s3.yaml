@@ -1,0 +1,51 @@
+﻿apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: promote-data-card
+spec:
+  params:
+    - name: file_name
+      type: string
+    - name: bucket_name
+      type: string
+    - name: endpoint_url
+      type: string
+    - name: aws_access_key_id
+      type: string
+    - name: aws_secret_access_key
+      type: string
+  tasks:
+    - name: get-object
+      params:
+        - name: file_name
+          value: $(params.file_name)
+        - name: bucket_name
+          value: $(params.bucket_name)
+        - name: endpoint_url
+          value: $(params.endpoint_url)
+        - name: aws_access_key_id
+          value: $(params.aws_access_key_id)
+        - name: aws_secret_access_key
+          value: $(params.aws_secret_access_key)
+      taskRef:
+        kind: Task
+        name: get-object-s3
+    - name: promote-data-card
+      params:
+        - name: data_card
+          value: $(tasks.get-object.results.json-content)
+        - name: file_name
+          value: $(params.file_name)
+        - name: bucket_name
+          value: $(params.bucket_name)
+        - name: endpoint_url
+          value: $(params.endpoint_url)
+        - name: aws_access_key_id
+          value: $(params.aws_access_key_id)
+        - name: aws_secret_access_key
+          value: $(params.aws_secret_access_key)
+      runAfter:
+        - get-object
+      taskRef:
+        kind: Task
+        name: promote-data-card

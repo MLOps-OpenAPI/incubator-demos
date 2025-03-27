@@ -1,0 +1,121 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: deploy-model
+spec:
+  params:
+  - default: https://github.com/MLOps-OpenAPI/incubator-demos.git
+    description: The git repo to pull from
+    name: git-repo
+    type: string
+  - default: minio
+    description: The S3 Access Key
+    name: access-key
+    type: string
+  - default: minio123
+    description: The S3 Secret Key
+    name: secret-key
+    type: string
+  - default: https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
+    description: The S3 URL Endpoint
+    name: bucket-endpoint
+    type: string
+  - default: model-bucket
+    description: The S3 Bucket Name
+    name: bucket-name
+    type: string
+  - default: granite-7b-instruct/
+    description: The Model path inside of the S3 Bucket
+    name: bucket-path
+    type: string
+  - default: model-bucket
+    description: The S3 secret name
+    name: display-name
+    type: string
+  - default: test-model-serving
+    description: The InferenceService name
+    name: inference-name
+    type: string
+  - default: test-lupanza
+    description: The namespace where everything is gonna be
+    name: namespace
+    type: string
+  - default: test-model-serving
+    description: The ServingRuntime name
+    name: serving-name
+    type: string
+  tasks:
+  - name: git-clone
+    params:
+    - name: url
+      value: $(params.git-repo)
+    - name: revision
+      value: ""
+    - name: refspec
+      value: ""
+    - name: submodules
+      value: "true"
+    - name: depth
+      value: "1"
+    - name: sslVerify
+      value: "true"
+    - name: crtFileName
+      value: ca-bundle.crt
+    - name: subdirectory
+      value: ""
+    - name: sparseCheckoutDirectories
+      value: ""
+    - name: deleteExisting
+      value: "true"
+    - name: httpProxy
+      value: ""
+    - name: httpsProxy
+      value: ""
+    - name: noProxy
+      value: ""
+    - name: verbose
+      value: "true"
+    - name: gitInitImage
+      value: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.40.2
+    - name: userHome
+      value: /home/git
+    taskRef:
+      kind: Task
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: output
+  - name: replace-vars
+    params:
+    - name: SCRIPT
+      value: oc help
+    - name: VERSION
+      value: "4.18"
+    - name: access-key
+      value: $(params.access-key)
+    - name: secret-key
+      value: $(params.secret-key)
+    - name: bucket-endpoint
+      value: $(params.bucket-endpoint)
+    - name: bucket-name
+      value: $(params.bucket-name)
+    - name: bucket-path
+      value: $(params.bucket-path)
+    - name: display-name
+      value: $(params.display-name)
+    - name: inference-name
+      value: $(params.inference-name)
+    - name: namespace
+      value: $(params.namespace)
+    - name: serving-name
+      value: $(params.serving-name)
+    runAfter:
+    - git-clone
+    taskRef:
+      kind: Task
+      name: replace-vars
+    workspaces:
+    - name: output
+      workspace: output
+  workspaces:
+  - name: output
