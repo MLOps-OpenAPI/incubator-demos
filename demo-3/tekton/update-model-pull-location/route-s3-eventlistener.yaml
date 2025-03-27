@@ -1,13 +1,13 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: promote-data-model
+  name: update-model-pull-location
 spec:
   host: mlops-router-demo-2.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
-  path: /promote-model
+  path: /update-model-pull-location
   to:
     kind: Service
-    name: el-promote-listener
+    name: el-update-location-listener
     weight: 100
   port:
     targetPort: http-listener

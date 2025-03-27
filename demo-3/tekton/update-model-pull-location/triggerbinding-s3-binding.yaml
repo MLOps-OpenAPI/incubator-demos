@@ -1,7 +1,7 @@
 ﻿apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
-  name: promote-binding
+  name: update-model-location-binding
 spec:
   params:
     - name: data_card

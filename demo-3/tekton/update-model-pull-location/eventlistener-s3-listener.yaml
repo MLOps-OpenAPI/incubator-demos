@@ -1,7 +1,7 @@
 ﻿apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
-  name: promote-listener
+  name: update-model-location-listener
 spec:
   namespaceSelector: {}
   resources: {}
@@ -9,7 +9,7 @@ spec:
   triggers:
     - bindings:
         - kind: TriggerBinding
-          ref: promote-binding
-      name: promote-trigger
+          ref: update-model-location-binding
+      name: update-model-location-trigger
       template:
-        ref: promote-template
+        ref: update-model-location-template

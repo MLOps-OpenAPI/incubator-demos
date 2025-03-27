@@ -1,7 +1,7 @@
 ﻿apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
-  name: promote-data-card
+  name: update-model-location
 spec:
   params:
     - name: file_name

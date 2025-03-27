@@ -3,7 +3,7 @@ kind: TriggerTemplate
 metadata:
   annotations:
     triggers.tekton.dev/old-escape-quotes: 'true'
-  name: promote-template
+  name: update-model-location-template
 spec:
   params:
     - name: data_card
@@ -33,4 +33,4 @@ spec:
           - name: aws_secret_access_key
             value: $(tt.params.secret_key)
         pipelineRef:
-          name: promote-data-card
+          name: update-model-location
