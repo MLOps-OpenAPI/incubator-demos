@@ -27,7 +27,7 @@ paths:
                 S3Url:
                   type: string
                   format: uri
-                  example: "https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com"
+                  example: "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
                 AccessKey:
                   type: string
                 SecretKey:

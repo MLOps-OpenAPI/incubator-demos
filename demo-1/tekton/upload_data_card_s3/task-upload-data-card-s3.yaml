@@ -49,7 +49,7 @@ spec:
                 service_name="s3",
                 aws_access_key_id='minio',
                 aws_secret_access_key='minio123',
-                endpoint_url='https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com',
+                endpoint_url='https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com',
             )
 
             s3_client = boto3.client(

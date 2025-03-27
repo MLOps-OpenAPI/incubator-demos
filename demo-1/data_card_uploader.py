@@ -21,7 +21,7 @@ def main():
         aws_access_key_id=aws_access_key_id,
         aws_secret_access_key=aws_secret_access_key,
         # TODO: Change hard-coded endpoint
-        endpoint_url="https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com",
+        endpoint_url="https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com",
     )
 
     event = dict()

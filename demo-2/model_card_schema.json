@@ -1,7 +1,7 @@
 {
     "buckets": [
         {
-            "bucketUrl": "https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com",
+            "bucketUrl": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com",
             "bucketName": "anthony-test-bucket",
             "path": "",
             "accessKey": "minio",
@@ -13,7 +13,7 @@
                     "LastModified": "2025-03-12 19:31:02",
                     "ETag": "\"8cf10101ad1ddb29df7fbbab9f007050\"",
                     "StorageClass": "STANDARD",
-                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com"
+                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
                 },
                 {
                     "FileName": "IMG_4321.JPEG",
@@ -21,7 +21,7 @@
                     "LastModified": "2025-03-12 19:34:32",
                     "ETag": "\"5f90b3f11872e4a69f379e308f088870\"",
                     "StorageClass": "STANDARD",
-                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com"
+                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
                 },
                 {
                     "FileName": "PXL_20240918_163623627.jpg",
@@ -29,7 +29,7 @@
                     "LastModified": "2025-03-14 12:15:33",
                     "ETag": "\"ca03c5869803191a92652bb80c20e5a9\"",
                     "StorageClass": "STANDARD",
-                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com"
+                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
                 },
                 {
                     "FileName": "test/IMG_4311.JPEG",
@@ -37,7 +37,7 @@
                     "LastModified": "2025-03-20 19:45:29",
                     "ETag": "\"8cf10101ad1ddb29df7fbbab9f007050\"",
                     "StorageClass": "STANDARD",
-                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com"
+                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
                 },
                 {
                     "FileName": "test/IMG_4321.JPEG",
@@ -45,7 +45,7 @@
                     "LastModified": "2025-03-20 19:45:15",
                     "ETag": "\"5f90b3f11872e4a69f379e308f088870\"",
                     "StorageClass": "STANDARD",
-                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com"
+                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
                 },
                 {
                     "FileName": "test/PXL_20240918_163623627.jpg",
@@ -53,7 +53,7 @@
                     "LastModified": "2025-03-20 19:45:15",
                     "ETag": "\"ca03c5869803191a92652bb80c20e5a9\"",
                     "StorageClass": "STANDARD",
-                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com"
+                    "SourceBucketUrl": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
                 }
             ]
         }
