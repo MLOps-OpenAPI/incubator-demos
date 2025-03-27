@@ -4,5 +4,6 @@ kind: Kustomization
 namespace: test-lupanza
 
 resources:
+- namespace.yaml
 - pipelines
 - tasks
