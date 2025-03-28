@@ -83,6 +83,11 @@ spec:
       ### by default the pipeline SA does not have enough privileges
       ### to run the oc cluster-info command
       #export CLUSTER_DOMAIN=`oc cluster-info | grep -oh https.* | awk -F / '{ print $3}' | awk -F : '{ print $1 }' | sed 's/api/apps/'`
-      echo "https://$(params.inference-name)-$(params.namespace).apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
+      echo "https://$(params.inference-name)-$(params.namespace).apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com" > "$(results.inference-route.path)"
   workspaces:
   - name: output
+  results:
+  - description: The exposed route that points to the newly created InferenceService
+    name: inference-route
+    type: string
+
