@@ -36,7 +36,7 @@ spec:
     description: The InferenceService name
     name: inference-name
     type: string
-  - default: test-lupanza
+  - default: demo-3
     description: The namespace where everything is gonna be
     name: namespace
     type: string
