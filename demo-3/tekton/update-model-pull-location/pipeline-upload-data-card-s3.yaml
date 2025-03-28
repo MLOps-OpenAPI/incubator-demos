@@ -36,6 +36,8 @@ spec:
       params:
         - name: model_card
           value: $(tasks.get-object.results.json-content)
+        - name: file_name
+          value: $(params.file_name)
         - name: model_pull_location
           value: $(params.model_pull_location)
         - name: bucket_name
