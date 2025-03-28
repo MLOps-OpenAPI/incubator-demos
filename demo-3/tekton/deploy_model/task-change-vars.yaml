@@ -78,5 +78,9 @@ spec:
 
       ### Apply changes
       oc apply -k .
+
+      ### Print out the route to hit
+      export CLUSTER_DOMAIN=`oc cluster-info | grep -oh https.* | awk -F / '{ print $3}' | awk -F : '{ print $1 }' | sed 's/api/apps/'`
+      echo "$(params.inference-name)-$(params.namespace).${CLUSTER_DOMAIN}"
   workspaces:
   - name: output
