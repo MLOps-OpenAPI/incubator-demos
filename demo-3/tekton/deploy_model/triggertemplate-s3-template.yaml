@@ -34,3 +34,6 @@ spec:
         #     value: $(tt.params.secret_key)
         pipelineRef:
           name: deploy-model
+        workspaces:
+          - name: output
+          
