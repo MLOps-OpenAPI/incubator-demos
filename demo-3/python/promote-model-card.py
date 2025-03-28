@@ -9,20 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def set_hash(data_card: dict):
-    buckets_string = str(data_card["buckets"])
-    print(f"Bucket info that is being hashed:\n{buckets_string}\n")
-    data_card["hash"] = hashlib.sha256(str.encode(buckets_string)).hexdigest()
-
-
-def check_hash(data_card: dict) -> Tuple[bool, str]:
-    buckets_string = str(data_card["buckets"])
-    print(f"Bucket info that is being hashed:\n{buckets_string}\n")
-    data_card_hash = hashlib.sha256(str.encode(buckets_string)).hexdigest()
-
-    return data_card["hash"] == data_card_hash, data_card_hash
-
-def update_data_card(data_card: dict):
+def update_model_card(data_card: dict):
 
     bucket_name = os.environ.get("BUCKET_NAME")
     endpoint_url=os.environ.get("S3_ENDPOINT")
@@ -42,30 +29,16 @@ def update_data_card(data_card: dict):
         Key=object_key,
         Body=json.dumps(data_card, indent=2)
     )
-    print(response)
 
 
 def main():
     print(os.getcwd())
-    # with open("incubator-demos/demo-2/python/promote-data-card.py", "r") as f:
-    #     data_card = json.load(f)
-    data_card = json.loads(os.environ.get("DATA_CARD"))
+    model_card = json.loads(os.environ.get("MODEL_CARD"))
+    model_location = os.environ.get("MODEL_PULL_LOCATION")
 
-    #setting the hash
-    set_hash(data_card)
-
-    #checking the hash
-    matches, desired_hash = check_hash(data_card)
-
-    if matches:
-        data_card["golden"] = True
-        print(json.dumps(data_card, indent=2))
-        update_data_card(data_card)
-    else:
-        print("error, the hash does not match.  This could indicate tampering")
-        print(f"current hash: {data_card['hash']}\nWhat the hash should be: {desired_hash}")
-
-
+    model_card["model_pull_location"] = model_location
+    print(json.dumps(model_card, indent=2))
+    update_model_card(model_card)
 
 if __name__ == "__main__":
     main()
