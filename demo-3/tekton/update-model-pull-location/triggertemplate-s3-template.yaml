@@ -6,10 +6,9 @@ metadata:
   name: update-model-location-template
 spec:
   params:
-    - name: data_card
+    - name: model_card
+    - name: model_pull_location
     - name: bucket
-    # - name: directory
-    #   default: ''
     - name: s3_url
     - name: access_key
     - name: secret_key
@@ -21,11 +20,11 @@ spec:
       spec:
         params:
           - name: file_name
-            value: $(tt.params.data_card)
+            value: $(tt.params.model_card)
+          - name: model_pull_location
+            value: $(tt.params.model_pull_location)
           - name: bucket_name
             value: $(tt.params.bucket)
-          # - name: directory
-          #   value: $(tt.params.directory)
           - name: endpoint_url
             value: $(tt.params.s3_url)
           - name: aws_access_key_id

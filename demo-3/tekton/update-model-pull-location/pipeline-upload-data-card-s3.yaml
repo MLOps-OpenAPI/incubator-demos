@@ -6,6 +6,8 @@ spec:
   params:
     - name: file_name
       type: string
+    - name: model_pull_location
+      type: string
     - name: bucket_name
       type: string
     - name: endpoint_url
@@ -30,12 +32,12 @@ spec:
       taskRef:
         kind: Task
         name: get-object-s3
-    - name: promote-data-card
+    - name: update-model-pull-location
       params:
-        - name: data_card
+        - name: model_card
           value: $(tasks.get-object.results.json-content)
-        - name: file_name
-          value: $(params.file_name)
+        - name: model_pull_location
+          value: $(params.model_pull_location)
         - name: bucket_name
           value: $(params.bucket_name)
         - name: endpoint_url

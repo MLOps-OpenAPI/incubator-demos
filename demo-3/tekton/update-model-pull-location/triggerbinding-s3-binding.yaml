@@ -4,12 +4,12 @@ metadata:
   name: update-model-location-binding
 spec:
   params:
-    - name: data_card
-      value: $(body.DataCard)
+    - name: model_card
+      value: $(body.ModelCard)
+    - name: model_pull_location
+      value: $(body.ModelPullLocation)
     - name: bucket
       value: $(body.Bucket)
-    # - name: directory
-    #   value: $(body.Directory)
     - name: s3_url
       value: $(body.S3Url)
     - name: access_key

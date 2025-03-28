@@ -1,13 +1,10 @@
 import boto3
 import os
 import json
-from typing import Tuple
-import hashlib
 
+# from dotenv import load_dotenv
 
-from dotenv import load_dotenv
-
-load_dotenv()
+# load_dotenv()
 
 def update_model_card(data_card: dict):
 
@@ -29,7 +26,7 @@ def update_model_card(data_card: dict):
         Key=object_key,
         Body=json.dumps(data_card, indent=2)
     )
-
+    print(response)
 
 def main():
     print(os.getcwd())
