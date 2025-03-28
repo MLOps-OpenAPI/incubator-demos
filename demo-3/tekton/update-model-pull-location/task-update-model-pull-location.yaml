@@ -16,8 +16,6 @@ spec:
       type: string
     - name: aws_secret_access_key
       type: string
-    - name: file_name
-      type: string
   steps:
     - computeResources: {}
       env:
@@ -25,8 +23,6 @@ spec:
           value: $(params.model_card)
         - name: MODEL_PULL_LOCATION
           value: $(params.model_pull_location)
-        - name: FILE_NAME
-          value: $(params.file_name)
         - name: BUCKET_NAME
           value: $(params.bucket_name)
         - name: S3_ENDPOINT
