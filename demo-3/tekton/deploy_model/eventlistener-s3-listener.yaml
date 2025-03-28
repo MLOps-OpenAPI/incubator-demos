@@ -7,7 +7,7 @@ spec:
   resources: {}
   serviceAccountName: pipeline
   triggers:
-    # - bindings:
+    - #bindings:
     #     - kind: TriggerBinding
     #       ref: promote-binding
       name: promote-trigger
