@@ -16,7 +16,7 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        generateName: upload-data-card-run-
+        generateName: update-model-location-
       spec:
         params:
           - name: file_name
