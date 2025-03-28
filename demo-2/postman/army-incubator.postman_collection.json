@@ -30,7 +30,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://mlops-router-demo-2.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/data-intake",
+							"raw": "http://mlops-router-demo-3.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/data-intake",
 							"protocol": "http",
 							"host": [
 								"mlops-router-demo-2",
@@ -72,7 +72,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://mlops-router-demo-2.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/get-data-card",
+							"raw": "http://mlops-router-demo-3.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/get-data-card",
 							"protocol": "http",
 							"host": [
 								"mlops-router-demo-2",
@@ -111,7 +111,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://mlops-router-demo-2.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/promote-data-card",
+							"raw": "http://mlops-router-demo-3.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/promote-data-card",
 							"protocol": "http",
 							"host": [
 								"mlops-router-demo-2",
@@ -150,7 +150,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://mlops-router-demo-2.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/request-model",
+							"raw": "http://mlops-router-demo-3.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/request-model",
 							"protocol": "http",
 							"host": [
 								"mlops-router-demo-2",
@@ -189,7 +189,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://mlops-router-demo-2.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/set",
+							"raw": "http://mlops-router-demo-3.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/set",
 							"protocol": "http",
 							"host": [
 								"mlops-router-demo-2",
