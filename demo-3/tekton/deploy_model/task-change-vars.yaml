@@ -66,15 +66,15 @@ spec:
       ### Using hash sign (#) on endpoint and path
       ### as they contain / in the value, messing up the substitution
 
-      sed -i "s/REPLACE_ACCESS_KEY/$(params.access-key)/g" *
-      sed -i "s/REPLACE_SECRET_KEY/$(params.secret-key)/g" *
-      sed -i "s/REPLACE_BUCKET_NAME/$(params.bucket-name)/g" *
-      sed -i "s#REPLACE_BUCKET_ENDPOINT#$(params.bucket-endpoint)#g" *
-      sed -i "s#REPLACE_BUCKET_PATH#$(params.bucket-path)#g" *
-      sed -i "s/REPLACE_DISPLAY_NAME/$(params.display-name)/g" *
-      sed -i "s/REPLACE_INFERENCE_NAME/$(params.inference-name)/g" *
-      sed -i "s/REPLACE_NAMESPACE/$(params.namespace)/g" *
-      sed -i "s/REPLACE_SERVING_NAME/$(params.serving-name)/g" *
+      sed -i "s/REPLACE_ACCESS_KEY/$(params.access-key)/g" *.yaml
+      sed -i "s/REPLACE_SECRET_KEY/$(params.secret-key)/g" *.yaml
+      sed -i "s/REPLACE_BUCKET_NAME/$(params.bucket-name)/g" *.yaml
+      sed -i "s#REPLACE_BUCKET_ENDPOINT#$(params.bucket-endpoint)#g" *.yaml
+      sed -i "s#REPLACE_BUCKET_PATH#$(params.bucket-path)#g" *.yaml
+      sed -i "s/REPLACE_DISPLAY_NAME/$(params.display-name)/g" *.yaml
+      sed -i "s/REPLACE_INFERENCE_NAME/$(params.inference-name)/g" *.yaml
+      sed -i "s/REPLACE_NAMESPACE/$(params.namespace)/g" *.yaml
+      sed -i "s/REPLACE_SERVING_NAME/$(params.serving-name)/g" *.yaml
 
       ### Apply changes
       oc apply -k .
