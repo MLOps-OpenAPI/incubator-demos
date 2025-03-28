@@ -10,6 +10,6 @@ spec:
     - #bindings:
     #     - kind: TriggerBinding
     #       ref: promote-binding
-      name: promote-trigger
+      name: deploy-trigger
       template:
-        ref: promote-template
+        ref: deploy-template
