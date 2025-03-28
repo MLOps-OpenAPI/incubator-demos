@@ -52,7 +52,9 @@ spec:
     image: quay.io/openshift/origin-cli:$(params.VERSION)
     name: replace-vars
     script: |
-      #!/usr/bin/env bash -x
+      #!/usr/bin/env bash
+
+      set -x
 
       ### Create the new directory with the manifests from template
       cd $(workspaces.output.path)/demo-3
