@@ -78,7 +78,5 @@ spec:
 
       ### Apply changes
       oc apply -k .
-
-      sleep 500
   workspaces:
   - name: output
