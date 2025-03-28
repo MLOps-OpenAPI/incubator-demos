@@ -3,7 +3,7 @@ kind: TriggerTemplate
 metadata:
   annotations:
     triggers.tekton.dev/old-escape-quotes: 'true'
-  name: promote-template
+  name: deploy-template
 spec:
   params:
     # - name: data_card
