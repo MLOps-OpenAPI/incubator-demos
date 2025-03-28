@@ -50,4 +50,4 @@ spec:
         - get-object
       taskRef:
         kind: Task
-        name: promote-data-card
+        name: update-model-pull-location
