@@ -1,0 +1,39 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: flask-router
+  labels:
+    app: flask-router
+    app.kubernetes.io/component: flask-router
+    app.kubernetes.io/instance: flask-router
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: flask-router
+  template:
+    metadata:
+      labels:
+        deployment: flask-router
+    spec:
+      containers:
+        - name: flask-router
+          image: 'quay.io/rh_ee_akugel/flask-router@sha256:6b5d6ec4daa1a6a4ab134d5280f91c9a668a394c800c4e3fcdae8af62057c803'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8081
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

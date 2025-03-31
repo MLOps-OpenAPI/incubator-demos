@@ -1,0 +1,19 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: flask-router
+  labels:
+    app: flask-router
+    app.kubernetes.io/component: flask-router
+    app.kubernetes.io/instance: flask-router
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: flask-router-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
+  to:
+    kind: Service
+    name: flask-router
+    weight: 100
+  port:
+    targetPort: 8081-tcp
+  wildcardPolicy: None

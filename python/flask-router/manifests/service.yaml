@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: flask-router
+  labels:
+    app: flask-router
+    app.kubernetes.io/component: flask-router
+    app.kubernetes.io/instance: flask-router
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: 8081-tcp
+      protocol: TCP
+      port: 8081
+      targetPort: 8081
+  internalTrafficPolicy: Cluster
+  selector:
+    deployment: flask-router
