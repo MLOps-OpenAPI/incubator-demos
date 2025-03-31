@@ -179,7 +179,7 @@
 			]
 		},
 		{
-			"name": "demo-3",
+			"name": "demo-4",
 			"item": [
 				{
 					"name": "chat-completions",
@@ -262,7 +262,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ModelCard\": \"granite-model-card.json\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"{{s3_endpoint}}\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\",\n    \"Namespace\": \"demo-3\",\n    \"InferenceName\": \"test-model-serving\"\n}",
+							"raw": "{\n    \"ModelCard\": \"granite-model-card.json\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"{{s3_endpoint}}\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\",\n    \"Namespace\": \"demo-4\",\n    \"InferenceName\": \"test-model-serving\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

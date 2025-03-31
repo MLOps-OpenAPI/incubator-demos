@@ -6,14 +6,14 @@ spec:
   project: default
   source:
     repoURL: https://github.com/MLOps-OpenAPI/incubator-demos.git
-    path: demo-3/template/kustomize/deploy-model
+    path: demo-4/template/kustomize/deploy-model
     targetRevision: HEAD
     directory:
       recurse: true
       jsonnet: {}
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo-3
+    namespace: demo-4
   syncPolicy:
     automated:
       prune: true

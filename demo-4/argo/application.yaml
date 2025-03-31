@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 'demo-3'
+  name: 'demo-4'
 spec:
   project: default
   source:
     repoURL: https://github.com/MLOps-OpenAPI/incubator-demos.git
-    path: demo-3/tekton
+    path: demo-4/tekton
     targetRevision: HEAD
     directory:
       recurse: true
       jsonnet: {}
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo-3
+    namespace: demo-4
   syncPolicy:
     automated:
       prune: true
