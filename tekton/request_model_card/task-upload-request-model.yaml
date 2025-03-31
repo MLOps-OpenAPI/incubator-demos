@@ -23,6 +23,16 @@ spec:
           value: $(params.results)
         - name: COMMENTS
           value: $(params.comments)
+        - name: ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: S3_ACCESS_KEY_ID
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: S3_SECRET_ACCESS_KEY
       image: 'quay.io/rh_ee_akugel/datacard-python:1.1'
       name: echo
       script: |
@@ -37,14 +47,14 @@ spec:
 
         def main():
 
-            aws_access_key_id = os.environ.get("ACCESS_KEY")
-            aws_secret_access_key = os.environ.get("SECRET_KEY")
+            #aws_access_key_id = os.environ.get("ACCESS_KEY")
+            #aws_secret_access_key = os.environ.get("SECRET_KEY")
             aws_endpoint = os.environ.get("ENDPOINT")
 
             s3_client_model_card_request = boto3.client(
                 service_name="s3",
-                aws_access_key_id='minio',
-                aws_secret_access_key='minio123',
+                aws_access_key_id=os.environ.get("ACCESS_KEY"),
+                aws_secret_access_key=os.environ.get("SECRET_KEY"),
                 endpoint_url='https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com',
             )
 
