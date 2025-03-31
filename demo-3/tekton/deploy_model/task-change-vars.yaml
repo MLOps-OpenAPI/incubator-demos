@@ -83,7 +83,11 @@ spec:
       ### by default the pipeline SA does not have enough privileges
       ### to run the oc cluster-info command
       #export CLUSTER_DOMAIN=`oc cluster-info | grep -oh https.* | awk -F / '{ print $3}' | awk -F : '{ print $1 }' | sed 's/api/apps/'`
-      echo "https://$(params.inference-name)-$(params.namespace).apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com" > "$(results.inference-route.path)"
+      #echo "https://$(params.inference-name)-$(params.namespace).apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com" > "$(results.inference-route.path)"
+      echo "Waiting for the InferenceService to deploy..."
+      oc wait --for=jsonpath='{.status.url}' inferenceservice/$(params.inference-name)
+      echo "InferenceService deployed and available: "
+      oc get inferenceservice $(params.inference-name) -o jsonpath='{.status.url}'
   workspaces:
   - name: output
   results:
