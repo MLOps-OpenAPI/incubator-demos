@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 'demo-4'
+  name: 'kustomize-app'
 spec:
   project: default
   source:
     repoURL: https://github.com/MLOps-OpenAPI/incubator-demos.git
-    path: demo-4/tekton
+    path: template/kustomize/deploy-model
     targetRevision: HEAD
     directory:
       recurse: true
@@ -18,5 +18,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+    # syncOptions:
+    #   - CreateNamespace=true
