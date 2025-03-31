@@ -1,0 +1,86 @@
+﻿apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: get-object-s3
+spec:
+  params:
+    - name: bucket_name
+      type: string
+    - name: endpoint_url
+      type: string
+    - name: aws_access_key_id
+      type: string
+    - name: aws_secret_access_key
+      type: string
+    - name: file_name
+      type: string
+  results:
+    - description: Content of the JSON file
+      name: json-content
+      type: string
+  steps:
+    - computeResources: {}
+      env:
+        - name: FILE_NAME
+          value: $(params.file_name)
+        - name: BUCKET_NAME
+          value: $(params.bucket_name)
+        - name: S3_ENDPOINT
+          value: $(params.endpoint_url)
+        - name: ACCESS_KEY
+          value: $(params.aws_access_key_id)
+        - name: SECRET_KEY
+          value: $(params.aws_secret_access_key)
+      image: 'quay.io/rh_ee_akugel/datacard-python:1.1'
+      name: get-data-s3
+      script: |
+        #!/usr/bin/env python3
+
+        import boto3
+        import os
+        from io import BytesIO
+        import json
+        import botocore.exceptions
+
+
+        def main():
+
+            bucket_name = os.environ.get("BUCKET_NAME")
+
+            aws_access_key_id = os.environ.get("ACCESS_KEY")
+            aws_secret_access_key = os.environ.get("SECRET_KEY")
+
+            file_name = os.environ.get("FILE_NAME")
+
+            s3_client = boto3.client(
+                service_name="s3",
+                aws_access_key_id=aws_access_key_id,
+                aws_secret_access_key=aws_secret_access_key,
+                endpoint_url=os.environ.get("S3_ENDPOINT"),
+            )
+
+            try:
+                # Download the object from S3
+                response = s3_client.get_object(Bucket=bucket_name, Key=file_name)
+                content = response['Body'].read().decode('utf-8')
+
+                # Try to parse the content as JSON
+                try:
+                    json_object = json.loads(content)
+                    # Pretty print the JSON object
+                    json_output = json.dumps(json_object, indent=2)
+                    print(json_object)
+                    with open("$(results.json-content.path)", "w") as result_file:
+                        result_file.write(json_output)
+                except json.JSONDecodeError:
+                    print("Error: The object is not valid JSON.")
+
+            except botocore.exceptions.ClientError as e:
+                if e.response['Error']['Code'] == "404":
+                    print("Error: The object does not exist.")
+                else:
+                    print(f"Error: {e}")
+
+
+        if __name__ == "__main__":
+            main()

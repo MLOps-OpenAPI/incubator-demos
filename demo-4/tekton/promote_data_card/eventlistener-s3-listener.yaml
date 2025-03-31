@@ -1,0 +1,15 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: promote-listener
+spec:
+  namespaceSelector: {}
+  resources: {}
+  serviceAccountName: pipeline
+  triggers:
+    - bindings:
+        - kind: TriggerBinding
+          ref: promote-binding
+      name: promote-trigger
+      template:
+        ref: promote-template

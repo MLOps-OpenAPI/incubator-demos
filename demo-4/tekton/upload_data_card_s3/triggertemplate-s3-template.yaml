@@ -1,0 +1,36 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  annotations:
+    triggers.tekton.dev/old-escape-quotes: 'true'
+  name: s3-template
+spec:
+  params:
+    - name: data_card
+    - name: bucket
+    - name: directory
+      default: ''
+    - name: s3_url
+    - name: access_key
+    - name: secret_key
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: upload-data-card-run-
+      spec:
+        params:
+          - name: data_card
+            value: $(tt.params.data_card)
+          - name: bucket
+            value: $(tt.params.bucket)
+          - name: directory
+            value: $(tt.params.directory)
+          - name: s3_url
+            value: $(tt.params.s3_url)
+          - name: access_key
+            value: $(tt.params.access_key)
+          - name: secret_key
+            value: $(tt.params.secret_key)
+        pipelineRef:
+          name: upload-data-card-s3

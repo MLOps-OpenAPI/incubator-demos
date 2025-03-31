@@ -1,0 +1,15 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: s3-listener
+spec:
+  namespaceSelector: {}
+  resources: {}
+  serviceAccountName: pipeline
+  triggers:
+    - bindings:
+        - kind: TriggerBinding
+          ref: s3-binding
+      name: s3-trigger
+      template:
+        ref: s3-template

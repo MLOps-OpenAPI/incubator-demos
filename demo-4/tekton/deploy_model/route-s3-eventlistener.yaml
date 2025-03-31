@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: deploy-model
+spec:
+  host: mlops-router-demo-3.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
+  path: /deploy-model
+  to:
+    kind: Service
+    name: el-deploy-model-listener
+    weight: 100
+  port:
+    targetPort: http-listener
+  wildcardPolicy: None

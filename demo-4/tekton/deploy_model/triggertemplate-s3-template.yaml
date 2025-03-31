@@ -1,0 +1,50 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  annotations:
+    triggers.tekton.dev/old-escape-quotes: 'true'
+  name: deploy-template
+spec:
+  params:
+    # - name: data_card
+    # - name: bucket
+    # # - name: directory
+    # #   default: ''
+    # - name: s3_url
+    # - name: access_key
+    # - name: secret_key
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: deploy-model-
+      spec:
+        # params:
+        #   - name: file_name
+        #     value: $(tt.params.data_card)
+        #   - name: bucket_name
+        #     value: $(tt.params.bucket)
+        #   # - name: directory
+        #   #   value: $(tt.params.directory)
+        #   - name: endpoint_url
+        #     value: $(tt.params.s3_url)
+        #   - name: aws_access_key_id
+        #     value: $(tt.params.access_key)
+        #   - name: aws_secret_access_key
+        #     value: $(tt.params.secret_key)
+        pipelineRef:
+          name: deploy-model
+        workspaces:
+          - name: output
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 1Gi
+                storageClassName: gp3-csi
+                volumeMode: Filesystem
+              status: {}

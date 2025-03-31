@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: update-model-pull-location
+spec:
+  host: mlops-router-demo-3.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
+  path: /update-model-pull-location
+  to:
+    kind: Service
+    name: el-update-model-location-listener
+    weight: 100
+  port:
+    targetPort: http-listener
+  wildcardPolicy: None
