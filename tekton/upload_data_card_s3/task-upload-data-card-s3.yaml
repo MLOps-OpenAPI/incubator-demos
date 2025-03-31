@@ -12,10 +12,10 @@ spec:
       type: string
     - name: s3_url
       type: string
-    - name: access_key
-      type: string
-    - name: secret_key
-      type: string
+    # - name: access_key
+    #   type: string
+    # - name: secret_key
+    #   type: string
   steps:
     - computeResources: {}
       env:
@@ -27,10 +27,20 @@ spec:
           value: $(params.directory)
         - name: ENDPOINT
           value: $(params.s3_url)
+        # - name: ACCESS_KEY
+        #   value: $(params.access_key)
+        # - name: SECRET_KEY
+        #   value: $(params.secret_key)
         - name: ACCESS_KEY
-          value: $(params.access_key)
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: S3_ACCESS_KEY_ID
         - name: SECRET_KEY
-          value: $(params.secret_key)
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: S3_SECRET_ACCESS_KEY
       image: 'quay.io/rh_ee_akugel/datacard-python:1.1'
       name: echo
       script: |

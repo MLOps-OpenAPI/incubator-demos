@@ -8,10 +8,10 @@ spec:
       type: string
     - name: endpoint_url
       type: string
-    - name: aws_access_key_id
-      type: string
-    - name: aws_secret_access_key
-      type: string
+    # - name: aws_access_key_id
+    #   type: string
+    # - name: aws_secret_access_key
+    #   type: string
     - name: file_name
       type: string
   results:
@@ -27,10 +27,20 @@ spec:
           value: $(params.bucket_name)
         - name: S3_ENDPOINT
           value: $(params.endpoint_url)
+        # - name: ACCESS_KEY
+        #   value: $(params.aws_access_key_id)
+        # - name: SECRET_KEY
+        #   value: $(params.aws_secret_access_key)
         - name: ACCESS_KEY
-          value: $(params.aws_access_key_id)
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: S3_ACCESS_KEY_ID
         - name: SECRET_KEY
-          value: $(params.aws_secret_access_key)
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: S3_SECRET_ACCESS_KEY
       image: 'quay.io/rh_ee_akugel/datacard-python:1.1'
       name: get-data-s3
       script: |

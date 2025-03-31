@@ -10,8 +10,8 @@ spec:
     - name: model_pull_location
     - name: bucket
     - name: s3_url
-    - name: access_key
-    - name: secret_key
+    # - name: access_key
+    # - name: secret_key
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -27,9 +27,9 @@ spec:
             value: $(tt.params.bucket)
           - name: endpoint_url
             value: $(tt.params.s3_url)
-          - name: aws_access_key_id
-            value: $(tt.params.access_key)
-          - name: aws_secret_access_key
-            value: $(tt.params.secret_key)
+          # - name: aws_access_key_id
+          #   value: $(tt.params.access_key)
+          # - name: aws_secret_access_key
+          #   value: $(tt.params.secret_key)
         pipelineRef:
           name: update-model-location

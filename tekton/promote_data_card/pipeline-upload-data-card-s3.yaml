@@ -10,10 +10,10 @@ spec:
       type: string
     - name: endpoint_url
       type: string
-    - name: aws_access_key_id
-      type: string
-    - name: aws_secret_access_key
-      type: string
+    # - name: aws_access_key_id
+    #   type: string
+    # - name: aws_secret_access_key
+    #   type: string
   tasks:
     - name: get-object
       params:
@@ -23,10 +23,10 @@ spec:
           value: $(params.bucket_name)
         - name: endpoint_url
           value: $(params.endpoint_url)
-        - name: aws_access_key_id
-          value: $(params.aws_access_key_id)
-        - name: aws_secret_access_key
-          value: $(params.aws_secret_access_key)
+        # - name: aws_access_key_id
+        #   value: $(params.aws_access_key_id)
+        # - name: aws_secret_access_key
+        #   value: $(params.aws_secret_access_key)
       taskRef:
         kind: Task
         name: get-object-s3
@@ -40,10 +40,10 @@ spec:
           value: $(params.bucket_name)
         - name: endpoint_url
           value: $(params.endpoint_url)
-        - name: aws_access_key_id
-          value: $(params.aws_access_key_id)
-        - name: aws_secret_access_key
-          value: $(params.aws_secret_access_key)
+        # - name: aws_access_key_id
+        #   value: $(params.aws_access_key_id)
+        # - name: aws_secret_access_key
+        #   value: $(params.aws_secret_access_key)
       runAfter:
         - get-object
       taskRef:

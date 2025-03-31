@@ -11,8 +11,8 @@ spec:
     # - name: directory
     #   default: ''
     - name: s3_url
-    - name: access_key
-    - name: secret_key
+    # - name: access_key
+    # - name: secret_key
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -28,9 +28,9 @@ spec:
           #   value: $(tt.params.directory)
           - name: endpoint_url
             value: $(tt.params.s3_url)
-          - name: aws_access_key_id
-            value: $(tt.params.access_key)
-          - name: aws_secret_access_key
-            value: $(tt.params.secret_key)
+          # - name: aws_access_key_id
+          #   value: $(tt.params.access_key)
+          # - name: aws_secret_access_key
+          #   value: $(tt.params.secret_key)
         pipelineRef:
           name: promote-data-card
