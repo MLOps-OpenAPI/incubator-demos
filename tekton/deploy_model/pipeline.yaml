@@ -36,7 +36,7 @@ spec:
     description: The InferenceService name
     name: inference-name
     type: string
-  - default: demo-4
+  - default: demo
     description: The namespace where everything is gonna be
     name: namespace
     type: string

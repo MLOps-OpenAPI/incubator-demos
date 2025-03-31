@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 'demo-4'
+  name: 'demo'
 spec:
   project: default
   source:
@@ -13,7 +13,7 @@ spec:
       jsonnet: {}
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo-4
+    namespace: demo
   syncPolicy:
     automated:
       prune: true
