@@ -41,7 +41,7 @@ spec:
             secretKeyRef:
               name: s3-credentials
               key: S3_SECRET_ACCESS_KEY
-      image: 'quay.io/rh_ee_akugel/datacard-python:1.1'
+      image: 'quay.io/rh_ee_akugel/python-tasks:0.0.2'
       name: echo
       script: |
         #!/usr/bin/env python3
