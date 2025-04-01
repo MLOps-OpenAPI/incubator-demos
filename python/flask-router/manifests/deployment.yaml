@@ -25,6 +25,17 @@ spec:
             - containerPort: 8081
               protocol: TCP
           imagePullPolicy: Always
+          env:
+          - name: ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-credentials
+                key: S3_ACCESS_KEY_ID
+          - name: SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-credentials
+                key: S3_SECRET_ACCESS_KEY
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

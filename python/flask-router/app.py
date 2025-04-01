@@ -12,9 +12,9 @@ def get_object(file_type: str):
         request_json = json.loads(request_body)
         try:
 
+            aws_access_key_id = os.environ.get("ACCESS_KEY")
+            aws_secret_access_key = os.environ.get("SECRET_KEY")
             bucket_name = request_json["Bucket"]
-            aws_access_key_id = request_json["AccessKey"]
-            aws_secret_access_key = request_json["SecretKey"]
             endpoint_url = request_json["S3Url"]
             
             #this allows us to grab a specific filetype
