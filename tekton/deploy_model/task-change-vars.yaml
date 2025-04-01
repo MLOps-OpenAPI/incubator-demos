@@ -57,8 +57,8 @@ spec:
       ### Create the new directory with the manifests from template
       cd $(workspaces.output.path)/
       export DATE_SUFFIX=`date -u +%+4Y%m%d-%H%M%S-%N`
-      cp -a template test-${DATE_SUFFIX}
-      cd test-${DATE_SUFFIX}
+      cp -a template model_serving/test-${DATE_SUFFIX}
+      cd model_serving/test-${DATE_SUFFIX}
 
       ### Read keys from s3-creds
       export S3_ACCESS_KEY_ID=`cat $(workspaces.s3-creds.path)/S3_ACCESS_KEY_ID`
@@ -87,6 +87,9 @@ spec:
 
       echo "InferenceService deployed and available: "
       oc get inferenceservice $(params.inference-name) -o jsonpath='{.status.url}' | tee "$(results.inference-route.path)"
+
+      ### Get the actual secret instead of the plain text values from the template
+      oc get secret -n $(params.namespace) $(params.display-name) -o yaml > s3-bucket.yaml
   workspaces:
   - name: output
   - name: s3-creds

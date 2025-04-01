@@ -119,6 +119,31 @@ spec:
       workspace: output
     - name: s3-creds
       workspace: s3-creds
+  - name: git-cli
+    runAfter:
+    - replace-vars
+    taskRef:
+      kind: Task
+      name: git-cli
+    params:
+    - name: BASE_IMAGE
+      value: >-
+        cgr.dev/chainguard/git:root-2.39@sha256:7759f87050dd8bacabe61354d75ccd7f864d6b6f8ec42697db7159eccd491139
+    - name: GIT_USER_NAME
+      value: tekton-ci
+    - name: GIT_USER_EMAIL
+      value: tekton-ci@example.com
+    - name: GIT_SCRIPT
+      value: >-
+        git config --global --add safe.directory /workspace/source && git
+        commit -am "Edited by Tekton CI" && git push origin main
+    - name: USER_HOME
+      value: /root
+    - name: VERBOSE
+      value: 'true'
+    workspaces:
+    - name: source
+      workspace: output
   workspaces:
   - name: output
   - name: s3-creds
