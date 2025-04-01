@@ -1,5 +1,3 @@
-
-
 ---
 apiVersion: tekton.dev/v1
 kind: Task
@@ -62,12 +60,16 @@ spec:
       cp -a template test-${DATE_SUFFIX}
       cd test-${DATE_SUFFIX}
 
+      ### Read keys from s3-creds
+      export S3_ACCESS_KEY_ID=`cat $(workspaces.s3-creds.path)/S3_ACCESS_KEY_ID`
+      export S3_SECRET_ACCESS_KEY=`cat $(workspaces.s3-creds.path)/S3_SECRET_ACCESS_KEY`
+
       ### Substitute CHANGEME vars with actual values
       ### Using hash sign (#) on endpoint and path
       ### as they contain / in the value, messing up the substitution
 
-      sed -i "s/REPLACE_ACCESS_KEY/$(params.access-key)/g" *.yaml
-      sed -i "s/REPLACE_SECRET_KEY/$(params.secret-key)/g" *.yaml
+      sed -i "s/REPLACE_ACCESS_KEY/${S3_ACCESS_KEY_ID}/g" *.yaml
+      sed -i "s/REPLACE_SECRET_KEY/${S3_SECRET_ACCESS_KEY}/g" *.yaml
       sed -i "s/REPLACE_BUCKET_NAME/$(params.bucket-name)/g" *.yaml
       sed -i "s#REPLACE_BUCKET_ENDPOINT#$(params.bucket-endpoint)#g" *.yaml
       sed -i "s#REPLACE_BUCKET_PATH#$(params.bucket-path)#g" *.yaml
