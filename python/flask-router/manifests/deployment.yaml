@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: flask-router
-          image: 'quay.io/rh_ee_akugel/flask-router:0.0.1'
+          image: 'quay.io/rh_ee_akugel/flask-router:0.0.2'
           ports:
             - containerPort: 8080
               protocol: TCP
