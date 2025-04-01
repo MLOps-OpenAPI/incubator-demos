@@ -87,6 +87,7 @@ spec:
       oc get inferenceservice $(params.inference-name) -o jsonpath='{.status.url}' | tee "$(results.inference-route.path)"
   workspaces:
   - name: output
+  - name: s3-creds
   results:
   - description: The exposed route that points to the newly created InferenceService
     name: inference-route

@@ -85,6 +85,8 @@ spec:
     workspaces:
     - name: output
       workspace: output
+    - name: s3-creds
+      workspace: s3-creds
   - name: replace-vars
     params:
     - name: SCRIPT
@@ -117,5 +119,8 @@ spec:
     workspaces:
     - name: output
       workspace: output
+    - name: s3-creds
+      workspace: s3-creds
   workspaces:
   - name: output
+  - name: s3-creds
