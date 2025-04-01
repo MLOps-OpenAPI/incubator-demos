@@ -57,7 +57,7 @@ spec:
       set -x
 
       ### Create the new directory with the manifests from template
-      cd $(workspaces.output.path)/demo
+      cd $(workspaces.output.path)/
       export DATE_SUFFIX=`date -u +%+4Y%m%d-%H%M%S-%N`
       cp -a template test-${DATE_SUFFIX}
       cd test-${DATE_SUFFIX}
