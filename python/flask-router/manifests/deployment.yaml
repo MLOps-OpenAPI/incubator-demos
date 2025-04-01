@@ -18,13 +18,13 @@ spec:
     spec:
       containers:
         - name: flask-router
-          image: 'quay.io/rh_ee_akugel/flask-router@sha256:6b5d6ec4daa1a6a4ab134d5280f91c9a668a394c800c4e3fcdae8af62057c803'
+          image: 'quay.io/rh_ee_akugel/flask-router:0.0.1'
           ports:
             - containerPort: 8080
               protocol: TCP
             - containerPort: 8081
               protocol: TCP
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

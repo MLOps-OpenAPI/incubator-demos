@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import os
 import boto3
 import json
@@ -6,18 +6,19 @@ import botocore
 
 app = Flask(__name__)
 
-@app.route('/get-data-card', methods=["GET", "POST"])
-def get_data_card():
+def get_object(file_type: str):
     request_body = request.data.decode("utf-8")
     if request_body:
         request_json = json.loads(request_body)
         try:
 
             bucket_name = request_json["Bucket"]
-            file_name = request_json["DataCard"]
             aws_access_key_id = request_json["AccessKey"]
             aws_secret_access_key = request_json["SecretKey"]
             endpoint_url = request_json["S3Url"]
+            
+            #this allows us to grab a specific filetype
+            file_name = request_json[file_type]
             
             s3_client = boto3.client(
             service_name="s3",
@@ -47,7 +48,20 @@ def get_data_card():
                 print(f"Error: {e}")
             
     else:
-        return request_body
+        return jsonify(request_body)
+
+
+@app.route('/get-data-card', methods=["GET"])
+def get_data_card():
+    return get_object("DataCard")
+
+@app.route('/get-model-card', methods=["GET"])
+def get_model_card():
+    return get_object("ModelCard")
+
+@app.route('/get-model-card-request', methods=["GET"])
+def get_model_card_request():
+    return get_object("ModelCardRequest")
 
 
 if __name__ == '__main__':
