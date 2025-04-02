@@ -44,7 +44,7 @@ def main():
     model_card = dict()
     model_card["model_request"] = os.environ.get("MODEL_REQUEST")
     model_card["data_cards"] = [os.environ.get("DATA_CARD")]
-    model_card["metadata"] = metadata["Metadata"]
+    model_card["metadata"] = metadata
     model_card["deployed_locations"] = [{
         "model_pull_location": model_location
     }]
