@@ -1,0 +1,15 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: get-data-card
+  namespace: demo
+spec:
+  host: mlops-router-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
+  path: /get-data-card
+  to:
+    kind: Service
+    name: flask-router
+    weight: 100
+  port:
+    targetPort: 8081-tcp
+  wildcardPolicy: None
