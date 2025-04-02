@@ -13,4 +13,4 @@ spec:
     - name: model_card_name
       value: $(body.ModelCardName)
     - name: metadata
-      value: $(body.MetaData)
+      value: $(body.Metadata)
