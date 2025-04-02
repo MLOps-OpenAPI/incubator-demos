@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def initialize_s3_client() -> boto3.client:
-    endpoint_url=os.environ.get("S3_ENDPOINT")
+    endpoint_url="https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
     aws_access_key_id = os.environ.get("ACCESS_KEY")
     aws_secret_access_key = os.environ.get("SECRET_KEY")
     
