@@ -10,14 +10,6 @@ spec:
     name: VERSION
     type: string
   - default: ""
-    description: The S3 Access Key
-    name: access-key
-    type: string
-  - default: ""
-    description: The S3 Secret Key
-    name: secret-key
-    type: string
-  - default: ""
     description: The S3 URL Endpoint
     name: bucket-endpoint
     type: string
