@@ -1,7 +1,7 @@
 ﻿apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
-  name: request-model-binding
+  name: build-model-binding
 spec:
   params:
     - name: data_card
