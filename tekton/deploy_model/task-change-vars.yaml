@@ -48,12 +48,12 @@ spec:
 
       ### Create the new directory with the manifests from template
       export DATE_SUFFIX=`date -u +%+4Y%m%d-%H%M%S-%N` ### eg: 20250402-112718-505481385
-      export MANIFEST_DIR=test-${DATE_SUFFIX}
+      export MANIFEST_DIR="model_serving/test-${DATE_SUFFIX}"
       echo "${MANIFEST_DIR}" > "$(results.manifests-dir.path)"
 
       cd $(workspaces.output.path)/
-      cp -a template model_serving/${MANIFEST_DIR}
-      cd model_serving/${MANIFEST_DIR}
+      cp -a template ${MANIFEST_DIR}
+      cd ${MANIFEST_DIR}
 
       ### Read keys from s3-creds
       export S3_ACCESS_KEY_ID=`cat $(workspaces.s3-creds.path)/S3_ACCESS_KEY_ID`
