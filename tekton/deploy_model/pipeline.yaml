@@ -136,6 +136,7 @@ spec:
     - name: GIT_SCRIPT
       value: >-
         git config --global --add safe.directory $(workspaces.source.path) && 
+        sleep 3600
         git checkout main && 
         git add . && 
         git commit -m "Edited by Tekton CI" && 
