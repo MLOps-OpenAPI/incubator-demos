@@ -146,9 +146,6 @@ spec:
     workspaces:
     - name: source
       workspace: output
-#    - name: basic-auth
-#      workspace: basic-auth
   workspaces:
   - name: output
   - name: s3-creds
-#  - name: basic-auth
