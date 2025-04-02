@@ -1,0 +1,37 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  annotations:
+    triggers.tekton.dev/old-escape-quotes: 'true'
+  name: build-model-template
+spec:
+  params:
+    - name: data_card
+
+    - name: model_request
+
+    - name: model_location
+
+    - name: model_card_name
+
+    - name: metadata
+
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: upload-build-model-run-
+      spec:
+        params:
+          - name: data_card
+            value: $(tt.params.data_card)
+          - name: model_request
+            value: $(tt.params.model_request)
+          - name: model_location
+            value: $(tt.params.model_location)
+          - name: model_card_name
+            value: $(tt.params.model_card_name)
+          - name: metadata
+            value: $(tt.params.metadata)
+        pipelineRef:
+          name: build-model

@@ -1,0 +1,32 @@
+﻿apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: build-model
+spec:
+  params:
+    - name: data_card
+      type: string
+    - name: model_request
+      type: string
+    - name: model_location
+      type: string
+    - name: model_card_name
+      type: string
+    - name: metadata
+      type: string
+  tasks:
+    - name: request-model
+      params:
+        - name: data_card
+          value: $(params.data_card)
+        - name: model_request
+          value: $(params.model_request)
+        - name: model_location
+          value: $(params.model_location)
+        - name: model_card_name
+          value: $(params.model_card_name)
+        - name: metadata
+          value: $(params.metadata)
+      taskRef:
+        kind: Task
+        name: build-model

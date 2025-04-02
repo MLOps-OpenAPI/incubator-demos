@@ -1,0 +1,16 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: request-model-binding
+spec:
+  params:
+    - name: data_card
+      value: $(body.DataCard)
+    - name: model_request
+      value: $(body.ModelRequest)
+    - name: model_location
+      value: $(body.ModelLocation)
+    - name: model_card_name
+      value: $(body.ModelCardName)
+    - name: metadata
+      value: $(body.MetaData)
