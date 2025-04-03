@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 'kustomize-app'
+  name: 'flask-router'
 spec:
   project: default
   source:
     repoURL: https://github.com/MLOps-OpenAPI/incubator-demos.git
-    path: template/kustomize/deploy-model
+    path: python/flask-router/manifests
     targetRevision: HEAD
     directory:
       recurse: true
@@ -18,5 +18,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    # syncOptions:
-    #   - CreateNamespace=true
