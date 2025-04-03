@@ -41,11 +41,14 @@ def main():
     model_card = get_object(os.environ.get("MODEL_CARD_NAME"), "model-cards", s3_client)
     print(json.dumps(model_card, indent=2)+ "\n\n\n")
     model_card["deployed_locations"][-1]["inference_service"] = os.environ.get("INFERENCE_ROUTE")
-    model_card["deployed_locations"][-1]["git_repo"] =  os.environ.get("GIT_URL") + os.environ.get("MANIFESTS_DIR")
+
+    git_url = os.environ.get("GIT_URL")
+    git_url = git_url.replace(".git", "/tree/main/")
+    model_card["deployed_locations"][-1]["git_repo"] =  git_url + os.environ.get("MANIFESTS_DIR")
 
     print(json.dumps(model_card, indent=2))
 
-    #push_object(key=os.environ.get("MODEL_CARD_NAME"), bucket="model_cards", object=model_card, s3_client=s3_client)
+    push_object(key=os.environ.get("MODEL_CARD_NAME"), bucket="model_cards", object=model_card, s3_client=s3_client)
 
 
 if __name__ == "__main__":

@@ -10,6 +10,8 @@ spec:
       type: string
     - name: model_card_name
       type: string
+    - name: git_url
+      type: string
   steps:
     - computeResources: {}
       env:
@@ -19,6 +21,8 @@ spec:
           value: $(params.manifests_dir)
         - name: MODEL_CARD_NAME
           value: $(params.model_card_name)
+        - name: GIT_URL
+          value: $(params.git_url)
         - name: ACCESS_KEY
           valueFrom:
             secretKeyRef:
@@ -71,7 +75,10 @@ spec:
             model_card = get_object(os.environ.get("MODEL_CARD_NAME"), "model-cards", s3_client)
             print(json.dumps(model_card, indent=2)+ "\n\n\n")
             model_card["deployed_locations"][-1]["inference_service"] = os.environ.get("INFERENCE_ROUTE")
-            model_card["deployed_locations"][-1]["git_repo"] =  os.environ.get("GIT_URL") + os.environ.get("MANIFESTS_DIR")
+
+            git_url = os.environ.get("GIT_URL")
+            git_url = git_url.replace(".git", "/tree/main/")
+            model_card["deployed_locations"][-1]["git_repo"] =  git_url + os.environ.get("MANIFESTS_DIR")
 
             print(json.dumps(model_card, indent=2))
 
