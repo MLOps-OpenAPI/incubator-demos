@@ -39,3 +39,20 @@ spec:
             value: $(tt.params.namespace)
         pipelineRef:
           name: deploy-model
+        workspaces:
+          - name: output
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 1Gi
+                storageClassName: gp3-csi
+                volumeMode: Filesystem
+              status: {}
+          - name: s3-creds
+            secret:
+              secretName: s3-credentials
