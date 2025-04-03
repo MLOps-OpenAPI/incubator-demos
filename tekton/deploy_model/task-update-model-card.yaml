@@ -1,7 +1,7 @@
 ﻿apiVersion: tekton.dev/v1
 kind: Task
 metadata:
-  name: build-model
+  name: update-model-card-with-inference-info
 spec:
   params:
     - name: inference_route

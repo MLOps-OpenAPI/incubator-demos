@@ -138,6 +138,19 @@ spec:
     workspaces:
     - name: source
       workspace: output
+  - name: update-model-card-with-inference-info
+    params:
+    - name: inference_route
+      value: $(tasks.replace-vars.results.inference-route)
+    - name: manifests_dir
+      value: $(tasks.replace-vars.results.manifests-dir)
+    - name: model_card_name
+      value: $(params.model_card)
+    runAfter:
+    - git-cli
+    taskRef:
+      kind: Task
+      name: update-model-card-with-inference-info
   workspaces:
   - name: output
   - name: s3-creds
