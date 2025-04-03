@@ -1,0 +1,24 @@
+apiVersion: v1
+data:
+  AWS_ACCESS_KEY_ID: bWluaW8=
+  AWS_S3_BUCKET: bW9kZWwtYnVja2V0
+  AWS_S3_ENDPOINT: aHR0cHM6Ly9taW5pby1hcGktbWluaW8uYXBwcy5jbHVzdGVyLTRnaG45LjRnaG45LnNhbmRib3gyNDMxLm9wZW50bGMuY29t
+  AWS_SECRET_ACCESS_KEY: bWluaW8xMjM=
+kind: Secret
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Secret","metadata":{"annotations":{"opendatahub.io/connection-type":"s3","opendatahub.io/connection-type-ref":"s3","openshift.io/description":"","openshift.io/display-name":"test-pipeline-deploy-data-connection"},"labels":{"opendatahub.io/dashboard":"true","opendatahub.io/managed":"true"},"name":"test-pipeline-deploy-data-connection","namespace":"demo"},"stringData":{"AWS_ACCESS_KEY_ID":"minio","AWS_S3_BUCKET":"model-bucket","AWS_S3_ENDPOINT":"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com","AWS_SECRET_ACCESS_KEY":"minio123"},"type":"Opaque"}
+    opendatahub.io/connection-type: s3
+    opendatahub.io/connection-type-ref: s3
+    openshift.io/description: ""
+    openshift.io/display-name: test-pipeline-deploy-data-connection
+  creationTimestamp: "2025-04-03T12:55:57Z"
+  labels:
+    opendatahub.io/dashboard: "true"
+    opendatahub.io/managed: "true"
+  name: test-pipeline-deploy-data-connection
+  namespace: demo
+  resourceVersion: "10883721"
+  uid: f70ea7a3-4ba2-49be-8605-e5b1ae23d609
+type: Opaque
