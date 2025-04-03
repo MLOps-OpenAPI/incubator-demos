@@ -24,10 +24,10 @@ spec:
     description: The Model path inside of the S3 Bucket
     name: path
     type: string
-  - default: model-bucket
-    description: The S3 secret name
-    name: display-name
-    type: string
+  # - default: model-bucket
+  #   description: The S3 secret name
+  #   name: display-name
+  #   type: string
   - #default: test-model-serving
     description: The InferenceService name
     name: inference_service_name
@@ -94,7 +94,7 @@ spec:
     - name: bucket-path
       value: $(params.path)
     - name: display-name
-      value: $(params.display-name)
+      value: $(params.inference_service_name)-data-connection
     - name: inference-name
       value: $(params.inference_service_name)
     - name: namespace
