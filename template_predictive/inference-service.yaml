@@ -1,0 +1,31 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  annotations:
+    openshift.io/display-name: REPLACE_INFERENCE_NAME
+    serving.knative.openshift.io/enablePassthrough: "true"
+    sidecar.istio.io/inject: "true"
+    sidecar.istio.io/rewriteAppHTTPProbers: "true"
+  labels:
+    opendatahub.io/dashboard: "true"
+  name: REPLACE_INFERENCE_NAME
+spec:
+  predictor:
+    maxReplicas: 1
+    minReplicas: 1
+    model:
+      modelFormat:
+        name: onnx
+        version: "1"
+      name: ""
+      resources:
+        limits:
+          cpu: "2"
+          memory: 8Gi
+        requests:
+          cpu: "1"
+          memory: 4Gi
+      runtime: REPLACE_SERVING_NAME
+      storage:
+        key: REPLACE_BUCKET_NAME
+        path: REPLACE_BUCKET_PATH
