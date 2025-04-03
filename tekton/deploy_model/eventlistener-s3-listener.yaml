@@ -7,9 +7,9 @@ spec:
   resources: {}
   serviceAccountName: pipeline
   triggers:
-    - #bindings:
-    #     - kind: TriggerBinding
-    #       ref: promote-binding
-      name: deploy-trigger
+    - bindings:
+        - kind: TriggerBinding
+          ref: deploy-model-binding
+      name: deploy-model-trigger
       template:
-        ref: deploy-template
+        ref: deploy-model-template
