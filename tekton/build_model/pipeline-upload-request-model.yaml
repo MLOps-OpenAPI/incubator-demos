@@ -12,6 +12,8 @@ spec:
       type: string
     - name: model_card_name
       type: string
+    - name: model_type
+      type: string
     - name: metadata
       type: string
   tasks:
@@ -25,6 +27,8 @@ spec:
           value: $(params.model_location)
         - name: model_card_name
           value: $(params.model_card_name)
+        - name: model_type
+          value: $(params.model_type)
         - name: metadata
           value: $(params.metadata)
       taskRef:

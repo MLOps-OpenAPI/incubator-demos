@@ -6,6 +6,7 @@
       "huggingface.co/ibm-granite/granite-7b-instruct"
     ]
   },
+  "ModelType": "generative", 
    "metadata": {
     "deployment": {
       "frameworks": ["PyTorch", "Transformers (Hugging Face)", "ONNX Runtime", "vLLM"],

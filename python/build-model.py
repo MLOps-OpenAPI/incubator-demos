@@ -48,6 +48,10 @@ def main():
     model_card["deployed_locations"] = [{
         "model_pull_location": model_location
     }]
+    if "ModelType" in model_request:
+        model_card["model_type"] = model_request["model_type"]
+    else:
+        model_card["model_type"] = os.environ.get("MODEL_TYPE")
     print(json.dumps(model_card, indent=2))
     print(json.dumps(model_request, indent=2))
 

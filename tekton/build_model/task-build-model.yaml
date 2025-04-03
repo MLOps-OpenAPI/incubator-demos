@@ -12,6 +12,8 @@ spec:
       type: string
     - name: model_card_name
       type: string
+    - name: model_type
+      type: string
     - name: metadata
       type: string
   steps:
@@ -25,6 +27,8 @@ spec:
           value: $(params.model_location)
         - name: MODEL_CARD_NAME
           value: $(params.model_card_name)
+        - name: MODEL_TYPE
+          value: $(params.model_type)
         - name: METADATA
           value: $(params.metadata)
         - name: ACCESS_KEY
@@ -86,6 +90,10 @@ spec:
             model_card["deployed_locations"] = [{
                 "model_pull_location": model_location
             }]
+            if "ModelType" in model_request:
+                model_card["model_type"] = model_request["model_type"]
+            else:
+                model_card["model_type"] = os.environ.get("MODEL_TYPE")
             print(json.dumps(model_card, indent=2))
             print(json.dumps(model_request, indent=2))
 
@@ -94,3 +102,4 @@ spec:
 
         if __name__ == "__main__":
             main()
+

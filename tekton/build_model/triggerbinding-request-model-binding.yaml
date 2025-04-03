@@ -12,5 +12,7 @@ spec:
       value: $(body.ModelLocation)
     - name: model_card_name
       value: $(body.ModelCardName)
+    - name: model_type
+      value: $(body.ModelType)
     - name: metadata
       value: $(body.Metadata)
