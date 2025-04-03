@@ -7,285 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "demo-2",
-			"item": [
-				{
-					"name": "data-intake",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"DataCard\": \"demo-data-card\",\n    \"Bucket\": \"data-bucket\",\n    \"S3Url\": \"{{s3_endpoint}}\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\",\n    \"Directory\": \"test\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://{{host}}/data-intake",
-							"protocol": "http",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"data-intake"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get-data-card",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"DataCard\": \"demo-data-card\",\n    \"Bucket\": \"data-cards\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\",\n    \"Directory\": \"test\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/get-data-card",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"get-data-card"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "promote-data-card",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"DataCard\": \"demo-data-card\",\n    \"Bucket\": \"data-cards\",\n    \"S3Url\": \"{{s3_endpoint}}\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://{{host}}/promote-data-card",
-							"protocol": "http",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"promote-data-card"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "request-model",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"ModelRequest\": \"fish-test\",\n  \"Algorithm\": \"image-proccessing\",\n  \"Results\": \"90% pass\",\n  \"Comments\": \"train a model that will replace heads with fish\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://{{host}}/request-model",
-							"protocol": "http",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"request-model"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "set-model-ref",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"DataCard\": \"test-27\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\",\n    \"path\": \"/test/\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://{{host}}/set-model-ref",
-							"protocol": "http",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"set-model-ref"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "demo",
-			"item": [
-				{
-					"name": "chat-completions",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n        \"model\": \"test-model-serving\",\n        \"messages\": [\n            {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n            {\"role\": \"user\", \"content\": \"Where is the best place to vacation in april\"}\n        ]\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://test-model-serving-test-lupanza.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/v1/chat/completions",
-							"protocol": "https",
-							"host": [
-								"test-model-serving-test-lupanza",
-								"apps",
-								"cluster-4ghn9",
-								"4ghn9",
-								"sandbox2431",
-								"opentlc",
-								"com"
-							],
-							"path": [
-								"v1",
-								"chat",
-								"completions"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update-model-pull-location",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"ModelCard\": \"granite-model-card.json\",\n    \"ModelPullLocation\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/model-bucket/granite-7b-instruct\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"{{s3_endpoint}}\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://{{host}}/update-model-pull-location",
-							"protocol": "http",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"update-model-pull-location"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deploy-model",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"ModelCard\": \"granite-model-card.json\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"{{s3_endpoint}}\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\",\n    \"Namespace\": \"demo\",\n    \"InferenceName\": \"test-model-serving\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://{{host}}/deploy-model",
-							"protocol": "http",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"deploy-model"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "upload-data-card-s3",
+			"name": "data-intake",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -297,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"DataCard\": \"test3\",\n    \"Bucket\": \"anthony-test-bucket\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-497z4.497z4.sandbox2736.opentlc.com\",\n    \"AccessKey\": \"{{access_key}}\",\n    \"SecretKey\": \"{{secret_key}}\"\n}",
+					"raw": "{\n    \"DataCard\": \"dry-run-2-data-card.json\",\n    \"Bucket\": \"data-bucket\",\n    \"S3Url\": \"{{s3_endpoint}}\",\n    \"Directory\": \"test\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -305,19 +27,321 @@
 					}
 				},
 				"url": {
-					"raw": "http://el-s3-listener-anthony-pipelines-test.apps.cluster-497z4.497z4.sandbox2736.opentlc.com/",
+					"raw": "http://{{host}}/data-intake",
 					"protocol": "http",
 					"host": [
-						"el-s3-listener-anthony-pipelines-test",
+						"{{host}}"
+					],
+					"path": [
+						"data-intake"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-data-card",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"DataCard\": \"dry-run-data-card.json\",\n    \"Bucket\": \"data-cards\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/get-data-card",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"get-data-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "promote-data-card",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"DataCard\": \"dry-run-data-card.json\",\n    \"Bucket\": \"data-cards\",\n    \"S3Url\": \"{{s3_endpoint}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/promote-data-card",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"promote-data-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request-model",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ModelRequest\": \"dry-run-model-request.json\",\n  \"Algorithm\": \"image-proccessing\",\n  \"Results\": \"85% pass\",\n  \"Comments\": \"train a model that will replace heads with fish\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/request-model",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"request-model"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-model-card-request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ModelCardRequest\": \"dry-run-model-request.json\",\n    \"Bucket\": \"request-models\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/get-model-card-request",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"get-model-card-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "build-model",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"DataCard\": \"dry-run-data-card.json\",\n  \"ModelRequest\": \"dry-run-model-request.json\",\n  \"ModelLocation\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/model-bucket/granite-7b-instruct\",\n  \"ModelCardName\": \"dry-run-model-card.json\",\n  \"ModelType\": \"generative\",\n  \"Metadata\": {\n   \"model_name\": \"granite-7b-instruct\",\n   \"model_version\": \"1.0\",\n   \"license\": \"Apache 2.0\",\n   \"developer\": \"Granite AI Research\",\n   \"description\": \"Granite-7B-Instruct is a 7-billion parameter instruction-tuned language model optimized for natural language understanding and generation tasks.\",\n   \"architecture\": \"Transformer-based decoder model\",\n   \"training_data\": \"Trained on a diverse mixture of open-domain datasets, including Common Crawl, Wikipedia, books, and high-quality instruction-tuning datasets.\",\n   \"parameters\": {\n     \"num_parameters\": \"7 billion\",\n     \"hidden_size\": 4096,\n     \"num_layers\": 32,\n     \"num_attention_heads\": 32\n   },\n   \"capabilities\": [\n     \"Text completion\",\n     \"Question answering\",\n     \"Summarization\",\n     \"Code generation\",\n     \"Conversational AI\"\n   ],\n   \"limitations\": [\n     \"May generate incorrect or biased responses.\",\n     \"Struggles with highly specialized or niche knowledge.\",\n     \"Limited reasoning depth compared to larger models.\"\n   ],\n   \"use_cases\": [\n     \"Chatbots and virtual assistants\",\n     \"Automated content generation\",\n     \"Document summarization\",\n     \"Educational tutoring\"\n   ],\n   \"source_data\": {\n    \"data_cards\": [\n    ],\n    \"model_cards\": [\n      \"huggingface.co/ibm-granite/granite-7b-instruct\"\n    ]\n  },\n   \"deployment\": {\n     \"frameworks\": [\"PyTorch\", \"Transformers (Hugging Face)\", \"ONNX Runtime\", \"vLLM\"],\n     \"hardware_requirements\": \"Recommended: A100 (40GB) or higher GPU for inference.\"\n   },\n   \"ethical_considerations\": {\n     \"bias_mitigation\": \"Efforts have been made to reduce biases, but some biases may still be present.\",\n     \"misuse_prevention\": \"Not intended for use in critical decision-making without human oversight.\"\n   },\n   \"citation\": \"Granite AI Research, 'Granite-7B-Instruct: A Scalable Instruction-Tuned Language Model', 2025.\"\n }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/build-model",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"build-model"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-model-pull-location",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ModelCard\": \"granite-model-card.json\",\n    \"ModelPullLocation\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/model-bucket/granite-7b-instruct\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"{{s3_endpoint}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/update-model-pull-location",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"update-model-pull-location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-model-card",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ModelCard\": \"dry-run-model-card.json\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/get-model-card",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"get-model-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deploy-model",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ModelCard\": \"dry-run-model-card.json\",\n    \"Bucket\": \"model-bucket\",\n    \"Path\": \"granite-7b-instruct/\",\n    \"InferenceServiceName\": \"dry-run\",\n    \"ServingRuntimeName\": \"dry-run-runtime\",\n    \"Namespace\": \"demo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/deploy-model",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"deploy-model"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chat-completions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"model\": \"dry-run\",\n        \"messages\": [\n            {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n            {\"role\": \"user\", \"content\": \"Where is the best place to vacation in april\"}\n        ]\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dry-run-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/v1/chat/completions",
+					"protocol": "https",
+					"host": [
+						"dry-run-demo",
 						"apps",
-						"cluster-497z4",
-						"497z4",
-						"sandbox2736",
+						"cluster-4ghn9",
+						"4ghn9",
+						"sandbox2431",
 						"opentlc",
 						"com"
 					],
 					"path": [
-						""
+						"v1",
+						"chat",
+						"completions"
 					]
 				}
 			},
@@ -364,7 +388,12 @@
 		},
 		{
 			"key": "s3_endpoint",
-			"value": "",
+			"value": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com",
+			"type": "string"
+		},
+		{
+			"key": "flask_host",
+			"value": "flask-router-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com",
 			"type": "string"
 		}
 	]
