@@ -12,29 +12,33 @@ spec:
     description: The S3 URL Endpoint
     name: bucket-endpoint
     type: string
-  - default: model-bucket
-    description: The S3 Bucket Name
-    name: bucket-name
+  - #default: test-granite-model-card.json
+    description: The name of the model card.
+    name: model_card
     type: string
-  - default: granite-7b-instruct/
+  - #default: model-bucket
+    description: The S3 Bucket Name
+    name: bucket
+    type: string
+  - #default: granite-7b-instruct/
     description: The Model path inside of the S3 Bucket
-    name: bucket-path
+    name: path
     type: string
   - default: model-bucket
     description: The S3 secret name
     name: display-name
     type: string
-  - default: test-model-serving
+  - #default: test-model-serving
     description: The InferenceService name
-    name: inference-name
+    name: inference_service_name
     type: string
-  - default: demo
+  - #default: demo
     description: The namespace where everything is gonna be
     name: namespace
     type: string
-  - default: test-model-serving
+  - #default: test-model-serving
     description: The ServingRuntime name
-    name: serving-name
+    name: serving_runtime_name
     type: string
   tasks:
   - name: git-clone
@@ -86,17 +90,17 @@ spec:
     - name: bucket-endpoint
       value: $(params.bucket-endpoint)
     - name: bucket-name
-      value: $(params.bucket-name)
+      value: $(params.bucket)
     - name: bucket-path
-      value: $(params.bucket-path)
+      value: $(params.path)
     - name: display-name
       value: $(params.display-name)
     - name: inference-name
-      value: $(params.inference-name)
+      value: $(params.inference_service_name)
     - name: namespace
       value: $(params.namespace)
     - name: serving-name
-      value: $(params.serving-name)
+      value: $(params.serving_runtime_name)
     runAfter:
     - git-clone
     taskRef:

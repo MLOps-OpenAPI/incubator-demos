@@ -45,7 +45,7 @@ def main():
 
     print(json.dumps(model_card, indent=2))
 
-    push_object(key=os.environ.get("MODEL_REQUEST"), bucket="model_cards", object=model_card, s3_client=s3_client)
+    push_object(key=os.environ.get("MODEL_CARD_NAME"), bucket="model_cards", object=model_card, s3_client=s3_client)
 
 
 if __name__ == "__main__":

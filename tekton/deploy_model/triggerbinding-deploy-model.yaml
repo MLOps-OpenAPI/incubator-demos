@@ -1,0 +1,18 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: deploy-model-binding
+spec:
+  params:
+    - name: model_card
+      value: $(body.ModelCard)
+    - name: bucket
+      value: $(body.Bucket)
+    - name: path
+      value: $(body.Path)
+    - name: inference_service_name
+      value: $(body.InferenceServiceName)
+    - name: serving_runtime_name
+      value: $(body.ServingRuntimeName)
+    - name: namespace
+      value: $(body.Namespace)

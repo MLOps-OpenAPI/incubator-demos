@@ -1,0 +1,41 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  annotations:
+    triggers.tekton.dev/old-escape-quotes: 'true'
+  name: deploy-model-template
+spec:
+  params:
+    - name: model_card
+
+    - name: bucket
+
+    - name: path
+
+    - name: inference_service_name
+
+    - name: serving_runtime_name
+
+    - name: namespace
+
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: deploy-model-run-
+      spec:
+        params:
+          - name: model_card
+            value: $(tt.params.model_card)
+          - name: bucket
+            value: $(tt.params.bucket)
+          - name: path
+            value: $(tt.params.path)
+          - name: inference_service_name
+            value: $(tt.params.inference_service_name)
+          - name: serving_runtime_name
+            value: $(tt.params.serving_runtime_name)
+          - name: namespace
+            value: $(tt.params.namespace)
+        pipelineRef:
+          name: deploy-model
