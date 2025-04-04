@@ -8,13 +8,14 @@ Deploy OpenShift Pipelines or Tekton
 This can be deployed with ArgoCD using the applications in the argo folder
 
 ```
-oc apply -f argo/
+oc apply -n openshift-gitops -f argo/*.yaml
 ```
 
 If not using argocd simply run these commands
 
 ```
-oc apply -R -n demo -k python/flask-router/manifests/
-oc apply -R -n demo -k tekton/
+oc apply -n demo -f python/flask-router/manifests/*.yaml
+oc apply -n demo -f python/flask-router/manifests/routes/*.yaml
+oc apply -n demo -f tekton/*/*.yaml
 ```
 
