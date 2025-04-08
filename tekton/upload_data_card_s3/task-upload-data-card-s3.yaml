@@ -58,6 +58,7 @@ spec:
             aws_access_key_id = os.environ.get("ACCESS_KEY")
             aws_secret_access_key = os.environ.get("SECRET_KEY")
             aws_endpoint = os.environ.get("ENDPOINT")
+            print(f"AWS ENDPOINT: {aws_endpoint}")
 
             s3_client_data_card = boto3.client(
                 service_name="s3",
