@@ -51,7 +51,7 @@ spec:
         import json
 
         def initialize_s3_client() -> boto3.client:
-            endpoint_url="https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com"
+            endpoint_url="https://minio-api-minio.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com"
             aws_access_key_id = os.environ.get("ACCESS_KEY")
             aws_secret_access_key = os.environ.get("SECRET_KEY")
             

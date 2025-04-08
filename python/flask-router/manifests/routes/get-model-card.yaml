@@ -4,7 +4,7 @@ metadata:
   name: get-model-card
   namespace: demo
 spec:
-  host: mlops-router-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
+  host: mlops-router-demo.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com
   path: /get-model-card
   to:
     kind: Service

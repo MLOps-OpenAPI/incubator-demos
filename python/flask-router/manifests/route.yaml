@@ -9,7 +9,7 @@ metadata:
   annotations:
     openshift.io/host.generated: 'true'
 spec:
-  host: flask-router-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
+  host: flask-router-demo.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com
   to:
     kind: Service
     name: flask-router

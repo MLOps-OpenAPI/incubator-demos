@@ -55,7 +55,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"DataCard\": \"dry-run-data-card.json\",\n    \"Bucket\": \"data-cards\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com\"\n}",
+					"raw": "{\n    \"DataCard\": \"dry-run-data-card.json\",\n    \"Bucket\": \"data-cards\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -157,7 +157,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"ModelCardRequest\": \"dry-run-model-request.json\",\n    \"Bucket\": \"request-models\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com\"\n}",
+					"raw": "{\n    \"ModelCardRequest\": \"dry-run-model-request.json\",\n    \"Bucket\": \"request-models\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -190,7 +190,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"DataCard\": \"dry-run-data-card.json\",\n  \"ModelRequest\": \"dry-run-model-request.json\",\n  \"ModelLocation\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/model-bucket/granite-7b-instruct\",\n  \"ModelCardName\": \"dry-run-model-card.json\",\n  \"ModelType\": \"generative\",\n  \"Metadata\": {\n   \"model_name\": \"granite-7b-instruct\",\n   \"model_version\": \"1.0\",\n   \"license\": \"Apache 2.0\",\n   \"developer\": \"Granite AI Research\",\n   \"description\": \"Granite-7B-Instruct is a 7-billion parameter instruction-tuned language model optimized for natural language understanding and generation tasks.\",\n   \"architecture\": \"Transformer-based decoder model\",\n   \"training_data\": \"Trained on a diverse mixture of open-domain datasets, including Common Crawl, Wikipedia, books, and high-quality instruction-tuning datasets.\",\n   \"parameters\": {\n     \"num_parameters\": \"7 billion\",\n     \"hidden_size\": 4096,\n     \"num_layers\": 32,\n     \"num_attention_heads\": 32\n   },\n   \"capabilities\": [\n     \"Text completion\",\n     \"Question answering\",\n     \"Summarization\",\n     \"Code generation\",\n     \"Conversational AI\"\n   ],\n   \"limitations\": [\n     \"May generate incorrect or biased responses.\",\n     \"Struggles with highly specialized or niche knowledge.\",\n     \"Limited reasoning depth compared to larger models.\"\n   ],\n   \"use_cases\": [\n     \"Chatbots and virtual assistants\",\n     \"Automated content generation\",\n     \"Document summarization\",\n     \"Educational tutoring\"\n   ],\n   \"source_data\": {\n    \"data_cards\": [\n    ],\n    \"model_cards\": [\n      \"huggingface.co/ibm-granite/granite-7b-instruct\"\n    ]\n  },\n   \"deployment\": {\n     \"frameworks\": [\"PyTorch\", \"Transformers (Hugging Face)\", \"ONNX Runtime\", \"vLLM\"],\n     \"hardware_requirements\": \"Recommended: A100 (40GB) or higher GPU for inference.\"\n   },\n   \"ethical_considerations\": {\n     \"bias_mitigation\": \"Efforts have been made to reduce biases, but some biases may still be present.\",\n     \"misuse_prevention\": \"Not intended for use in critical decision-making without human oversight.\"\n   },\n   \"citation\": \"Granite AI Research, 'Granite-7B-Instruct: A Scalable Instruction-Tuned Language Model', 2025.\"\n }\n}",
+					"raw": "{\n  \"DataCard\": \"dry-run-data-card.json\",\n  \"ModelRequest\": \"dry-run-model-request.json\",\n  \"ModelLocation\": \"https://minio-api-minio.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com/model-bucket/granite-7b-instruct\",\n  \"ModelCardName\": \"dry-run-model-card.json\",\n  \"ModelType\": \"generative\",\n  \"Metadata\": {\n   \"model_name\": \"granite-7b-instruct\",\n   \"model_version\": \"1.0\",\n   \"license\": \"Apache 2.0\",\n   \"developer\": \"Granite AI Research\",\n   \"description\": \"Granite-7B-Instruct is a 7-billion parameter instruction-tuned language model optimized for natural language understanding and generation tasks.\",\n   \"architecture\": \"Transformer-based decoder model\",\n   \"training_data\": \"Trained on a diverse mixture of open-domain datasets, including Common Crawl, Wikipedia, books, and high-quality instruction-tuning datasets.\",\n   \"parameters\": {\n     \"num_parameters\": \"7 billion\",\n     \"hidden_size\": 4096,\n     \"num_layers\": 32,\n     \"num_attention_heads\": 32\n   },\n   \"capabilities\": [\n     \"Text completion\",\n     \"Question answering\",\n     \"Summarization\",\n     \"Code generation\",\n     \"Conversational AI\"\n   ],\n   \"limitations\": [\n     \"May generate incorrect or biased responses.\",\n     \"Struggles with highly specialized or niche knowledge.\",\n     \"Limited reasoning depth compared to larger models.\"\n   ],\n   \"use_cases\": [\n     \"Chatbots and virtual assistants\",\n     \"Automated content generation\",\n     \"Document summarization\",\n     \"Educational tutoring\"\n   ],\n   \"source_data\": {\n    \"data_cards\": [\n    ],\n    \"model_cards\": [\n      \"huggingface.co/ibm-granite/granite-7b-instruct\"\n    ]\n  },\n   \"deployment\": {\n     \"frameworks\": [\"PyTorch\", \"Transformers (Hugging Face)\", \"ONNX Runtime\", \"vLLM\"],\n     \"hardware_requirements\": \"Recommended: A100 (40GB) or higher GPU for inference.\"\n   },\n   \"ethical_considerations\": {\n     \"bias_mitigation\": \"Efforts have been made to reduce biases, but some biases may still be present.\",\n     \"misuse_prevention\": \"Not intended for use in critical decision-making without human oversight.\"\n   },\n   \"citation\": \"Granite AI Research, 'Granite-7B-Instruct: A Scalable Instruction-Tuned Language Model', 2025.\"\n }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -223,7 +223,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"ModelCard\": \"granite-model-card.json\",\n    \"ModelPullLocation\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/model-bucket/granite-7b-instruct\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"{{s3_endpoint}}\"\n}",
+					"raw": "{\n    \"ModelCard\": \"granite-model-card.json\",\n    \"ModelPullLocation\": \"https://minio-api-minio.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com/model-bucket/granite-7b-instruct\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"{{s3_endpoint}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -259,7 +259,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"ModelCard\": \"dry-run-model-card.json\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com\"\n}",
+					"raw": "{\n    \"ModelCard\": \"dry-run-model-card.json\",\n    \"Bucket\": \"model-cards\",\n    \"S3Url\": \"https://minio-api-minio.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -327,7 +327,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://dry-run-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/v1/chat/completions",
+					"raw": "https://dry-run-demo.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com/v1/chat/completions",
 					"protocol": "https",
 					"host": [
 						"dry-run-demo",
@@ -388,12 +388,12 @@
 		},
 		{
 			"key": "s3_endpoint",
-			"value": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com",
+			"value": "https://minio-api-minio.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com",
 			"type": "string"
 		},
 		{
 			"key": "flask_host",
-			"value": "flask-router-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com",
+			"value": "flask-router-demo.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com",
 			"type": "string"
 		}
 	]

@@ -8,7 +8,7 @@ spec:
     description: The git repo to pull from
     name: git-repo
     type: string
-  - default: https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
+  - default: https://minio-api-minio.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com
     description: The S3 URL Endpoint
     name: bucket-endpoint
     type: string

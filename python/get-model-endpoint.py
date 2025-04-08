@@ -80,7 +80,7 @@ def main():
         "misuse_prevention": "Not intended for use in critical decision-making without human oversight."
     },
     "citation": "Granite AI Research, 'Granite-7B-Instruct: A Scalable Instruction-Tuned Language Model', 2025.",
-    "model_pull_location": "https://minio-api-minio.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com/model-bucket/granite-7b-instruct",
+    "model_pull_location": "https://minio-api-minio.apps.cluster-vtmgm.vtmgm.sandbox441.opentlc.com/model-bucket/granite-7b-instruct",
     "deployed_locations": [
 
     ]
