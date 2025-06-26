@@ -1,7 +1,12 @@
 # MLOPS API Pipeline
 This project is designed to make a series API endpoints that can be hit to document and manage every step of the mlops process
 
-# Prerequisits
+
+
+# Deployment of Demos to Generic Kubernetes
+This version is to allow the demo applications to be deployed to Kubernetes without any dependencies on Red Hat OpenShift.  Ideally it will allow a standalone deployment for a reasonably configured laptop running Windows, Linux or Mac OSX. 
+
+# Prerequisites
 Deploy OpenShift Pipelines or Tekton
 
 # Deploy
