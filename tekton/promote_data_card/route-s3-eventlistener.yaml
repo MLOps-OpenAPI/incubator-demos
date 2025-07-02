@@ -1,14 +1,15 @@
-kind: Route
-apiVersion: route.openshift.io/v1
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: promote-data-card
 spec:
-  host: mlops-router-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
-  path: /promote-data-card
-  to:
-    kind: Service
-    name: el-promote-listener
-    weight: 100
-  port:
-    targetPort: http-listener
-  wildcardPolicy: None
+  rules:
+  - http:
+      paths:
+      - path: /promote-data-card
+        pathType: Prefix
+        backend:
+          service:
+            name: el-promote-listener
+            port:
+              number: 8080

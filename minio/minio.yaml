@@ -33,7 +33,7 @@ spec:
   selector:
     app: minio
   sessionAffinity: None
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -136,40 +136,40 @@ spec:
         persistentVolumeClaim:
           claimName: minio
 ---
-apiVersion: route.openshift.io/v1
-kind: Route
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   labels:
     app: minio
     app.kubernetes.io/component: minio
   name: minio-api
 spec:
-  port:
-    targetPort: api
-  tls:
-    insecureEdgeTerminationPolicy: Redirect
-    termination: edge
-  to:
-    kind: Service
-    name: minio
-    weight: 100
-  wildcardPolicy: None
+  rules:
+  - http:
+      paths:
+      - path: /minio-api
+        pathType: Prefix
+        backend:
+          service:
+            name: minio
+            port:
+              number: 9000
 ---
-apiVersion: route.openshift.io/v1
-kind: Route
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   labels:
     app: minio
     app.kubernetes.io/component: minio
   name: minio-ui
 spec:
-  port:
-    targetPort: ui
-  tls:
-    insecureEdgeTerminationPolicy: Redirect
-    termination: edge
-  to:
-    kind: Service
-    name: minio
-    weight: 100
-  wildcardPolicy: None
+  rules:
+  - http:
+      paths:
+      - path: /minio-ui
+        pathType: Prefix
+        backend:
+          service:
+            name: minio
+            port:
+              number: 9090

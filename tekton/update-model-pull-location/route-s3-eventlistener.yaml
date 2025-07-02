@@ -1,14 +1,15 @@
-kind: Route
-apiVersion: route.openshift.io/v1
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: update-model-pull-location
 spec:
-  host: mlops-router-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
-  path: /update-model-pull-location
-  to:
-    kind: Service
-    name: el-update-model-location-listener
-    weight: 100
-  port:
-    targetPort: http-listener
-  wildcardPolicy: None
+  rules:
+  - http:
+      paths:
+      - path: /update-model-pull-location
+        pathType: Prefix
+        backend:
+          service:
+            name: el-update-model-location-listener
+            port:
+              number: 8080
