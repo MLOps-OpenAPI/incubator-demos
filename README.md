@@ -1,39 +1,55 @@
 # MLOPS API Pipeline
 This project is designed to make a series API endpoints that can be hit to document and manage every step of the mlops process
 
-
-
-# Deployment of Demos to Generic Kubernetes
-This version is to allow the demo applications to be deployed to Kubernetes without any dependencies on Red Hat OpenShift.  Ideally it will allow a standalone deployment for a reasonably configured laptop running Windows, Linux or Mac OSX. 
+# Deployment of Demos to minikube
+This version is to allow the demo applications to be deployed to Kubernetes without any dependencies on Red Hat OpenShift. This was tested with minikube, but should work on any Kubernetes distribution. 
 
 # Prerequisites
-Deploy OpenShift Pipelines or Tekton
+Kubernetes - If installing locally you can use minikube (https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download) 
 
-# Deploy
-This can be deployed with ArgoCD using the applications in the argo folder
-
+This is the tested configuration that minikube was started with
 ```
-oc apply -n openshift-gitops -f argo/*.yaml
-```
-
-If not using argocd simply run these commands
-
-```
-oc apply -n demo -f python/flask-router/manifests/*.yaml
-oc apply -n demo -f python/flask-router/manifests/routes/*.yaml
-oc apply -n demo -f tekton/*/*.yaml
+minikube start --cpus 4 --memory 8192
+minikube addons enable ingress
+minikube addons enable dashboard
 ```
 
-## Deploying to a fresh Openshift cluster
+Tekton must be installed
+```
+kubectl apply -f https://storage.googleapis.com/tekton-releases/operator/latest/release.yaml
+kubectl apply -f https://raw.githubusercontent.com/tektoncd/operator/main/config/crs/kubernetes/config/all/operator_v1alpha1_config_cr.yaml
+```
 
-1. Create a new branch in the repo.
-2. Run a global find and replace for apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com for whatever the equivalent in your cluster.  Do this for the entire repo in your branch.
-3. Install openshift gitops on the cluster
-4. Add the three apps in the `argo` subdirectory manually.  Replace the `HEAD` revision with whatever you branch is called.
-5. Add the following minio buckets manually:
-    1. data-bucket
-    2. data-cards
-    3. model-bucket
-    4. model-cards
-    5. request-models
-6. You can import the [collection](postman/army-incubator.postman_collection.json) file in the `postman` directory.  The find and replace should hit those, endpoints as well, so it Should work as is.
+We'll create the demo and minio namespaces
+```
+kubectl create namespace demo
+kubectl create namespace minio
+```
+
+Run these commands to deploy the demo artifacts
+```
+kubectl apply -f minio/minio.yaml -n minio
+kubectl apply -f python/flask-router/manifests/ -n demo
+kubectl apply -f python/flask-router/manifests/routes/ -n demo
+kubectl apply -f tekton/build_model/ -n demo
+kubectl apply -f tekton/deploy_model/ -n demo
+kubectl apply -f tekton/promote_data_card/ -n demo
+kubectl apply -f tekton/request_model_card/ -n demo
+kubectl apply -f tekton/update-model-pull-location/ -n demo
+kubectl apply -f tekton/upload_data_card_s3/ -n demo
+```
+
+To access an endpoint run the below example for minio:
+Copy the ADDRESS 
+```
+kubectl get ingress -o wide -n minio
+```
+Copy the PORT
+```
+kubectl get service minio -n minio
+```
+
+If you're accessing the minio UI URL it would look something like below. Note that we're not using the default 9090:
+100.100.10.10:31762
+
+# TODO - Demo instructions
