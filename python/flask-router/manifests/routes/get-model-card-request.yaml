@@ -1,15 +1,16 @@
-kind: Route
-apiVersion: route.openshift.io/v1
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: get-model-card-request
   namespace: demo
 spec:
-  host: mlops-router-demo.apps.cluster-4ghn9.4ghn9.sandbox2431.opentlc.com
-  path: /get-model-card-request
-  to:
-    kind: Service
-    name: flask-router
-    weight: 100
-  port:
-    targetPort: 8081-tcp
-  wildcardPolicy: None
+  rules:
+  - http:
+      paths:
+      - path: /get-model-card-request
+        pathType: Prefix
+        backend:
+          service:
+            name: flask-router
+            port:
+              number: 8081
