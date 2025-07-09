@@ -50,6 +50,8 @@ kubectl get service minio -n minio
 ```
 
 If you're accessing the minio UI URL it would look something like below. Note that we're not using the default 9090:
+
 100.100.10.10:31762
+
 
 # TODO - Demo instructions
